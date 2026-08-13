@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #f6ead6;
+  --terracotta: #1c5c33;
+  --ink: #3a2a1f;
+  --olive: #c2932f;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--ink);
+  background-color: var(--cream);
+  /* warm paper texture — a hint of grain, sun coming from the top */
+  background-image:
+    radial-gradient(1100px 600px at 30% -8%, rgba(194, 147, 47, 0.12), transparent 60%),
+    radial-gradient(900px 700px at 90% 10%, rgba(28, 92, 51, 0.08), transparent 55%),
+    radial-gradient(1400px 900px at 50% 115%, rgba(58, 42, 31, 0.06), transparent 60%);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--terracotta);
+  color: var(--cream);
+}
+
+/* ---------- warm glow behind the accent word, not neon — a candle, not a sign ---------- */
+
+.warm-glow {
+  background: linear-gradient(180deg, #8faa3f 0%, #1c5c33 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 30px rgba(28, 92, 51, 0.35);
+}
+
+/* ---------- scroll reveal, gentle rise ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--d, 0s);
+  will-change: opacity, transform;
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- card lift on hover ---------- */
+
+.warm-card {
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.warm-card:hover,
+.warm-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: rgba(28, 92, 51, 0.45);
+  box-shadow: 0 18px 40px rgba(58, 42, 31, 0.14);
+}
+
+.headline-tight {
+  letter-spacing: -0.01em;
+}
+
+/* subtle ember pulse, used sparingly (e.g. the flame glyph) */
+.ember-glow {
+  animation: ember-pulse 3.6s infinite ease-in-out;
+}
+
+@keyframes ember-pulse {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .warm-card {
+    transition: none;
+  }
+  .warm-card:hover {
+    transform: none;
+  }
+  .ember-glow {
+    animation: none;
+  }
+}

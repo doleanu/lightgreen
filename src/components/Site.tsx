@@ -310,7 +310,7 @@ export function Site({ locale }: { locale: Locale }) {
       <GrillGrate className="h-8 w-full opacity-50" />
 
       {/* ============ AMBIENTE ============ */}
-      <section id="ambiente" className="relative bg-cream py-24 sm:py-32">
+      <section id="ambiente" className="relative bg-cream py-20 sm:py-28">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 md:grid-cols-12 md:items-center">
           <Reveal delay="0.1s" className="md:col-span-7 md:order-1">
             <MonoLabel>{d.ambiente.label}</MonoLabel>
@@ -327,7 +327,7 @@ export function Site({ locale }: { locale: Locale }) {
       </section>
 
       {/* ============ EVENTOS ============ */}
-      <section id="eventos" className="relative bg-cream py-24 sm:py-32">
+      <section id="eventos" className="relative bg-cream-deep py-24 sm:py-32">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="text-center">
             <MonoLabel>{d.eventos.label}</MonoLabel>
@@ -340,34 +340,47 @@ export function Site({ locale }: { locale: Locale }) {
             </p>
           </div>
 
-          <div className="mt-14 grid gap-4 sm:grid-cols-2">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2">
             {d.eventos.weekly.map((ev, i) => (
               <Reveal key={ev.title} delay={`${i * 0.1}s`}>
-                <div className="warm-card h-full rounded-2xl border border-terracotta/15 bg-cream-card p-6">
-                  <p className="font-display text-xl font-bold text-ink">{ev.title}</p>
-                  <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-terracotta">
-                    {ev.schedule}
-                  </p>
-                  <p className="mt-1 text-sm text-ink-soft font-light">{ev.note}</p>
+                <div className="warm-card h-full overflow-hidden rounded-2xl border border-terracotta/15 bg-cream-card">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={ev.photo} alt={ev.alt} className="h-48 w-full object-cover" loading="lazy" />
+                  <div className="p-6">
+                    <p className="font-display text-xl font-bold text-ink">{ev.title}</p>
+                    <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-terracotta">
+                      {ev.schedule}
+                    </p>
+                    <p className="mt-1 text-sm text-ink-soft font-light">{ev.note}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}
           </div>
 
-          <Reveal delay="0.2s" className="mt-10">
+          <Reveal delay="0.2s" className="mt-12">
             <p className="text-center text-xs uppercase tracking-widest2 text-terracotta/90">
               {d.eventos.specialLabel}
             </p>
-            <div className="warm-card mx-auto mt-5 max-w-3xl rounded-[2rem] bg-terracotta px-8 py-12 text-center shadow-2xl shadow-terracotta/30 sm:px-16 sm:py-16">
-              <p className="font-display text-3xl font-extrabold leading-tight text-cream sm:text-4xl">
-                {d.eventos.specialTitle}
-              </p>
-              <p className="mt-4 mx-auto max-w-xl text-base font-light leading-relaxed text-cream/90 sm:text-lg">
-                {d.eventos.specialText}
-              </p>
-              <p className="mt-6 font-sans text-xs font-semibold uppercase tracking-widest2 text-olive-bright">
-                {d.eventos.specialWhen}
-              </p>
+            <div className="warm-card mx-auto mt-5 max-w-3xl overflow-hidden rounded-[2rem] shadow-2xl shadow-terracotta/30">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={d.eventos.specialPhoto}
+                alt={d.eventos.specialAlt}
+                className="h-56 w-full object-cover"
+                loading="lazy"
+              />
+              <div className="bg-terracotta px-8 py-10 text-center sm:px-16 sm:py-12">
+                <p className="font-display text-3xl font-extrabold leading-tight text-cream sm:text-4xl">
+                  {d.eventos.specialTitle}
+                </p>
+                <p className="mt-4 mx-auto max-w-xl text-base font-light leading-relaxed text-cream/90 sm:text-lg">
+                  {d.eventos.specialText}
+                </p>
+                <p className="mt-6 font-sans text-xs font-semibold uppercase tracking-widest2 text-olive-bright">
+                  {d.eventos.specialWhen}
+                </p>
+              </div>
             </div>
           </Reveal>
         </div>

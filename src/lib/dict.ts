@@ -83,11 +83,13 @@ export type Dict = {
     titlePre: string;
     titleWarm: string;
     intro: string;
-    weekly: { title: string; schedule: string; note: string }[];
+    weekly: { title: string; schedule: string; note: string; photo: string; alt: string }[];
     specialLabel: string;
     specialTitle: string;
     specialText: string;
     specialWhen: string;
+    specialPhoto: string;
+    specialAlt: string;
   };
   resenas: {
     label: string;
@@ -290,11 +292,15 @@ const es: Dict = {
         title: "Kenny G — Artista en vivo",
         schedule: "Lunes · Jueves · Sábado",
         note: "20:00 – 23:00",
+        photo: "/photos/kenny-g-real.jpg",
+        alt: "Kenny G actuando en directo en Light Green Bar & Grill",
       },
       {
         title: "Sax N' Lounge",
         schedule: "Solo martes",
         note: "20:00 – 23:00",
+        photo: "/photos/sax-lounge-real.jpg",
+        alt: "Dúo Sax N' Lounge tocando saxofón y teclado en directo",
       },
     ],
     specialLabel: "Próximo evento especial",
@@ -302,6 +308,8 @@ const es: Dict = {
     specialText:
       "Humo de la brasa y ritmos latinos en Light Green — toda la noche a puro sabor latino.",
     specialWhen: "Viernes 4 de septiembre · 18:00 – 24:00",
+    specialPhoto: "/photos/noche-latina-real.jpg",
+    specialAlt: "DJ Adrián pinchando en la Noche Latina de Light Green",
   },
   resenas: {
     label: "06 · Lo que se dice",
@@ -1015,11 +1023,15 @@ const en: Dict = {
         title: "Kenny G — Live artist",
         schedule: "Monday · Thursday · Saturday",
         note: "8:00 PM – 11:00 PM",
+        photo: "/photos/kenny-g-real.jpg",
+        alt: "Kenny G performing live at Light Green Bar & Grill",
       },
       {
         title: "Sax N' Lounge",
         schedule: "Tuesdays only",
         note: "8:00 PM – 11:00 PM",
+        photo: "/photos/sax-lounge-real.jpg",
+        alt: "Sax N' Lounge duo playing saxophone and keys live",
       },
     ],
     specialLabel: "Coming up",
@@ -1027,6 +1039,8 @@ const en: Dict = {
     specialText:
       "Smoke off the grill and Latin rhythms at Light Green — a full night of pure Latin flavour.",
     specialWhen: "Friday, September 4 · 6:00 PM – Midnight",
+    specialPhoto: "/photos/noche-latina-real.jpg",
+    specialAlt: "DJ Adrián spinning at Light Green's Noche Latina",
   },
   resenas: {
     label: "06 · What people say",

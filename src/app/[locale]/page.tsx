@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Site } from "@/components/Site";
 import { DICTS, LOCALES, type Locale } from "@/lib/dict";
-import { OG_IMAGE } from "../layout";
+import { OG_IMAGE, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from "@/lib/seo";
 
 export function generateStaticParams() {
   return LOCALES.filter((l) => l !== "es").map((locale) => ({ locale }));
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: d.meta.ogDescription,
       locale: locale === "en" ? "en_GB" : locale,
       type: "website",
-      images: [{ url: OG_IMAGE, width: 1200, height: 1600, alt: "Light Green Bar & Grill entrance, real photo" }],
+      images: [{ url: OG_IMAGE, width: OG_IMAGE_WIDTH, height: OG_IMAGE_HEIGHT, alt: "Light Green Bar & Grill" }],
     },
     twitter: {
       card: "summary_large_image",

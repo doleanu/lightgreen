@@ -8,6 +8,16 @@ export type MenuItem = { name: string; desc: string; price: string };
 export type MenuSection = { title: string; items: MenuItem[] };
 export type MenuTab = { key: string; label: string; sections: MenuSection[] };
 
+export type LegalSection = { heading: string; body: string[] };
+export type LegalDoc = {
+  metaTitle: string;
+  metaDescription: string;
+  title: string;
+  updated: string;
+  intro: string;
+  sections: LegalSection[];
+};
+
 export type Dict = {
   htmlLang: string;
   meta: {
@@ -68,6 +78,17 @@ export type Dict = {
     titleWarm: string;
     para: string;
   };
+  eventos: {
+    label: string;
+    titlePre: string;
+    titleWarm: string;
+    intro: string;
+    weekly: { title: string; schedule: string; note: string }[];
+    specialLabel: string;
+    specialTitle: string;
+    specialText: string;
+    specialWhen: string;
+  };
   resenas: {
     label: string;
     ratingLabel: string;
@@ -108,8 +129,16 @@ export type Dict = {
     ctaMessenger: string;
   };
   footer: {
-    demo: string;
+    copyright: string;
     webBy: string;
+    legalNotice: string;
+    privacy: string;
+    cookies: string;
+  };
+  legal: {
+    legalNotice: LegalDoc;
+    privacy: LegalDoc;
+    cookies: LegalDoc;
   };
   menuPage: {
     metaTitle: string;
@@ -132,7 +161,7 @@ const es: Dict = {
   meta: {
     title: "Light Green Bar & Grill — Parrilla argentina en Golf del Sur, Tenerife",
     description:
-      "Light Green Bar & Grill, Golf del Sur (San Blas): parrilla argentina con carne de vaca canaria de pasto (grass-fed), chimichurri casero y cortes premium. 4,7★ en Google. C. San Blas, Local 4. Abierto todos los días 11:00–23:00. Sitio de demostración no oficial.",
+      "Light Green Bar & Grill, Golf del Sur (San Blas): parrilla argentina con carne de vaca canaria de pasto (grass-fed), chimichurri casero y cortes premium. 4,7★ en Google. C. San Blas, Local 4. Abierto todos los días 11:00–23:00.",
     ogDescription:
       "Carne de vaca canaria de pasto (grass-fed) al fuego vivo, chimichurri casero y cortes premium, en el centro comercial San Blas, Golf del Sur.",
   },
@@ -250,14 +279,38 @@ const es: Dict = {
     para:
       "Algunas noches, buen ambiente, música en directo mientras se termina la carne. Un sitio para quedarse un rato más de lo previsto.",
   },
+  eventos: {
+    label: "05 · Eventos",
+    titlePre: "Ven por la comida, ",
+    titleWarm: "quédate por la música",
+    intro:
+      "Música en vivo toda la semana, y alguna noche especial que no querrás perderte.",
+    weekly: [
+      {
+        title: "Kenny G — Artista en vivo",
+        schedule: "Lunes · Jueves · Sábado",
+        note: "20:00 – 23:00",
+      },
+      {
+        title: "Sax N' Lounge",
+        schedule: "Solo martes",
+        note: "20:00 – 23:00",
+      },
+    ],
+    specialLabel: "Próximo evento especial",
+    specialTitle: "Noche Latina con DJ Adrián",
+    specialText:
+      "Humo de la brasa y ritmos latinos en Light Green — toda la noche a puro sabor latino.",
+    specialWhen: "Viernes 4 de septiembre · 18:00 – 24:00",
+  },
   resenas: {
-    label: "05 · Lo que se dice",
+    label: "06 · Lo que se dice",
     ratingLabel: "Valoración media en Google",
     para:
       "Local Guides destacan la calidad de la carne, las raciones generosas y el ambiente — un recién llegado al centro comercial San Blas que ya se ha ganado sitio propio.",
   },
   faq: {
-    label: "06 · Preguntas frecuentes",
+    label: "07 · Preguntas frecuentes",
     title: "Lo que más preguntan",
     items: [
       {
@@ -278,12 +331,12 @@ const es: Dict = {
       },
       {
         q: "¿Tienen ambiente con música en vivo?",
-        a: "Algunas noches sí — clientes mencionan buen ambiente y música en directo.",
+        a: "Sí — Kenny G en directo los lunes, jueves y sábado, y Sax N' Lounge los martes, de 20:00 a 23:00.",
       },
     ],
   },
   reserva: {
-    label: "07 · Reserva tu mesa",
+    label: "08 · Reserva tu mesa",
     titlePre: "Reserva tu ",
     titleWarm: "mesa",
     intro:
@@ -299,7 +352,7 @@ const es: Dict = {
     note: "Al enviar se abre WhatsApp con tu reserva ya escrita — solo tienes que confirmarla.",
   },
   contacto: {
-    label: "08 · Encuéntranos",
+    label: "09 · Encuéntranos",
     titlePre: "Te esperamos en ",
     titleWarm: "San Blas",
     whereLabel: "Dónde",
@@ -313,8 +366,146 @@ const es: Dict = {
     ctaMessenger: "Escribir por Messenger",
   },
   footer: {
-    demo: "Sitio de demostración — propuesta de diseño no oficial",
+    copyright: "© 2026 Light Green Bar & Grill",
     webBy: "Web de",
+    legalNotice: "Aviso legal",
+    privacy: "Privacidad",
+    cookies: "Cookies",
+  },
+  legal: {
+    legalNotice: {
+      metaTitle: "Aviso legal — Light Green Bar & Grill",
+      metaDescription: "Aviso legal del sitio web de Light Green Bar & Grill: datos identificativos del titular, condiciones de uso y propiedad intelectual.",
+      title: "Aviso legal",
+      updated: "Última actualización: agosto de 2026",
+      intro:
+        "En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilitan a continuación los datos identificativos del titular de este sitio web.",
+      sections: [
+        {
+          heading: "1. Datos identificativos del titular",
+          body: [
+            "Titular: Mitrica Claudio Nicusor.",
+            "NIF: Z4127143M.",
+            "Domicilio: C. San Blas, Local 4, 38639 Golf del Sur, San Miguel de Abona, Santa Cruz de Tenerife, España.",
+            "Actividad: Restauración (bar-grill).",
+            "Contacto: por WhatsApp o teléfono, +39 351 173 3108.",
+          ],
+        },
+        {
+          heading: "2. Objeto del sitio web",
+          body: [
+            "Este sitio web tiene carácter informativo: presenta el local, su carta y sus datos de contacto, y permite iniciar una reserva de mesa a través de WhatsApp. No se realizan ventas ni cobros a través del sitio web.",
+          ],
+        },
+        {
+          heading: "3. Condiciones de uso",
+          body: [
+            "El acceso y uso de este sitio web atribuye la condición de usuario e implica la aceptación de las condiciones incluidas en este Aviso Legal. El usuario se compromete a hacer un uso adecuado de los contenidos y servicios ofrecidos, y a no emplearlos para incurrir en actividades ilícitas o contrarias a la buena fe.",
+          ],
+        },
+        {
+          heading: "4. Propiedad intelectual",
+          body: [
+            "Los textos, fotografías, logotipos y demás contenidos de este sitio web son propiedad de su titular o se utilizan con la debida autorización, y están protegidos por la normativa de propiedad intelectual. Queda prohibida su reproducción total o parcial sin autorización previa.",
+          ],
+        },
+        {
+          heading: "5. Responsabilidad",
+          body: [
+            "El titular no garantiza la ausencia total de errores en los contenidos ni la disponibilidad continua del sitio web, y no se responsabiliza de los daños derivados del uso incorrecto de este sitio web por parte de terceros.",
+          ],
+        },
+        {
+          heading: "6. Legislación aplicable",
+          body: [
+            "Las presentes condiciones se rigen por la legislación española. Para cualquier controversia derivada del uso de este sitio web, las partes se someten a los juzgados y tribunales que resulten competentes conforme a la ley.",
+          ],
+        },
+      ],
+    },
+    privacy: {
+      metaTitle: "Política de privacidad — Light Green Bar & Grill",
+      metaDescription: "Política de privacidad del sitio web de Light Green Bar & Grill: qué datos se recogen a través del formulario de reserva y cómo se tratan.",
+      title: "Política de privacidad",
+      updated: "Última actualización: agosto de 2026",
+      intro:
+        "En Light Green Bar & Grill respetamos tu privacidad. Esta política explica, de forma clara, qué datos se recogen en este sitio web y con qué finalidad.",
+      sections: [
+        {
+          heading: "1. Responsable del tratamiento",
+          body: [
+            "Mitrica Claudio Nicusor, NIF Z4127143M, con domicilio en C. San Blas, Local 4, 38639 Golf del Sur, San Miguel de Abona, Santa Cruz de Tenerife.",
+          ],
+        },
+        {
+          heading: "2. Qué datos se recogen",
+          body: [
+            "El formulario de reserva de mesa solicita tu nombre, fecha, hora, número de personas y, opcionalmente, un mensaje adicional (alergias, silla para bebé, etc.).",
+            "Estos datos no se envían ni se almacenan en ningún servidor: el formulario solo genera un mensaje de WhatsApp ya redactado, que se abre en tu propio WhatsApp para que decidas si lo envías. A partir de ese momento, la conversación queda sujeta a la política de privacidad de WhatsApp (Meta).",
+            "El asistente de chat del sitio web funciona igual: es un asistente automático que solo se ejecuta en tu navegador, no envía datos a ningún servidor externo ni utiliza inteligencia artificial con conexión a internet.",
+          ],
+        },
+        {
+          heading: "3. Finalidad del tratamiento",
+          body: [
+            "Gestionar tu solicitud de reserva de mesa y facilitar el contacto directo contigo a través de WhatsApp, Messenger o llamada telefónica.",
+          ],
+        },
+        {
+          heading: "4. Legitimación",
+          body: [
+            "La base legal es tu consentimiento, expresado al rellenar voluntariamente el formulario y al enviar el mensaje de WhatsApp resultante.",
+          ],
+        },
+        {
+          heading: "5. Cesión de datos a terceros",
+          body: [
+            "No se ceden datos a terceros. La única comunicación es la que tú mismo envías por WhatsApp o Messenger, plataformas de Meta Platforms Ireland Limited, cuya política de privacidad puedes consultar en whatsapp.com/legal/privacy-policy y facebook.com/privacy/policy.",
+          ],
+        },
+        {
+          heading: "6. Conservación de los datos",
+          body: [
+            "Al no almacenarse ningún dato en los servidores de este sitio web, no existe un periodo de conservación por nuestra parte. Los mensajes que envíes por WhatsApp se conservan según la configuración de tu propia cuenta de WhatsApp.",
+          ],
+        },
+        {
+          heading: "7. Tus derechos",
+          body: [
+            "Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad escribiendo por WhatsApp o llamando al +39 351 173 3108.",
+          ],
+        },
+      ],
+    },
+    cookies: {
+      metaTitle: "Política de cookies — Light Green Bar & Grill",
+      metaDescription: "Política de cookies del sitio web de Light Green Bar & Grill: qué cookies se utilizan y cómo gestionarlas.",
+      title: "Política de cookies",
+      updated: "Última actualización: agosto de 2026",
+      intro:
+        "Este sitio web utiliza únicamente las cookies técnicas estrictamente necesarias para su funcionamiento. No utilizamos cookies de analítica, publicidad ni de seguimiento de terceros.",
+      sections: [
+        {
+          heading: "1. Qué es una cookie",
+          body: [
+            "Una cookie es un pequeño archivo que un sitio web puede guardar en tu navegador para recordar información sobre tu visita.",
+          ],
+        },
+        {
+          heading: "2. Cookies que utiliza este sitio",
+          body: [
+            "Este sitio web no instala cookies propias de analítica, publicidad ni redes sociales. El alojamiento (Vercel) puede utilizar cookies técnicas estrictamente necesarias para servir el sitio de forma segura, que no requieren consentimiento según la normativa vigente.",
+            "Si en el futuro se incorporan herramientas de analítica o publicidad, esta política se actualizará y se solicitará tu consentimiento antes de activarlas.",
+          ],
+        },
+        {
+          heading: "3. Cómo gestionar las cookies",
+          body: [
+            "Puedes permitir, bloquear o eliminar las cookies instaladas en tu equipo mediante la configuración de tu navegador. Ten en cuenta que bloquear determinadas cookies puede afectar al funcionamiento del sitio web.",
+          ],
+        },
+      ],
+    },
   },
   menuPage: {
     metaTitle: "Carta digital — Light Green Bar & Grill, Golf del Sur",
@@ -695,7 +886,7 @@ const en: Dict = {
   meta: {
     title: "Light Green Bar & Grill — Argentinian Grill in Golf del Sur, Tenerife",
     description:
-      "Light Green Bar & Grill, Golf del Sur (San Blas): Argentinian-style grill with grass-fed Canarian beef, homemade chimichurri and premium cuts. 4.7★ on Google. C. San Blas, Local 4. Open every day 11:00–23:00. Unofficial demo site.",
+      "Light Green Bar & Grill, Golf del Sur (San Blas): Argentinian-style grill with grass-fed Canarian beef, homemade chimichurri and premium cuts. 4.7★ on Google. C. San Blas, Local 4. Open every day 11:00–23:00.",
     ogDescription:
       "Grass-fed Canarian beef grilled over open flame, homemade chimichurri and premium cuts, in the San Blas shopping centre, Golf del Sur.",
   },
@@ -813,14 +1004,38 @@ const en: Dict = {
     para:
       "Some nights bring good atmosphere and live music while the meat is finished off. A place to stay a little longer than planned.",
   },
+  eventos: {
+    label: "05 · Live music",
+    titlePre: "Come for the food, ",
+    titleWarm: "stay for the music",
+    intro:
+      "Live music every week, plus the odd special night you won't want to miss.",
+    weekly: [
+      {
+        title: "Kenny G — Live artist",
+        schedule: "Monday · Thursday · Saturday",
+        note: "8:00 PM – 11:00 PM",
+      },
+      {
+        title: "Sax N' Lounge",
+        schedule: "Tuesdays only",
+        note: "8:00 PM – 11:00 PM",
+      },
+    ],
+    specialLabel: "Coming up",
+    specialTitle: "Noche Latina with DJ Adrián",
+    specialText:
+      "Smoke off the grill and Latin rhythms at Light Green — a full night of pure Latin flavour.",
+    specialWhen: "Friday, September 4 · 6:00 PM – Midnight",
+  },
   resenas: {
-    label: "05 · What people say",
+    label: "06 · What people say",
     ratingLabel: "Average rating on Google",
     para:
       "Local Guides highlight the quality of the meat, generous portions and the atmosphere — a newcomer to the San Blas shopping centre that's already made a name for itself.",
   },
   faq: {
-    label: "06 · Frequently asked",
+    label: "07 · Frequently asked",
     title: "What people ask most",
     items: [
       {
@@ -841,12 +1056,12 @@ const en: Dict = {
       },
       {
         q: "Is there live music?",
-        a: "Some nights, yes — guests mention good atmosphere and live music.",
+        a: "Yes — Kenny G live on Monday, Thursday and Saturday, and Sax N' Lounge on Tuesdays, from 8 PM to 11 PM.",
       },
     ],
   },
   reserva: {
-    label: "07 · Book your table",
+    label: "08 · Book your table",
     titlePre: "Book your ",
     titleWarm: "table",
     intro: "Fill in the form and we'll message you on WhatsApp to confirm — that simple.",
@@ -861,7 +1076,7 @@ const en: Dict = {
     note: "Sending opens WhatsApp with your booking already written — just confirm it.",
   },
   contacto: {
-    label: "08 · Find us",
+    label: "09 · Find us",
     titlePre: "We're waiting for you in ",
     titleWarm: "San Blas",
     whereLabel: "Where",
@@ -875,8 +1090,146 @@ const en: Dict = {
     ctaMessenger: "Message on Messenger",
   },
   footer: {
-    demo: "Demo site — unofficial design proposal",
+    copyright: "© 2026 Light Green Bar & Grill",
     webBy: "Website by",
+    legalNotice: "Legal notice",
+    privacy: "Privacy",
+    cookies: "Cookies",
+  },
+  legal: {
+    legalNotice: {
+      metaTitle: "Legal notice — Light Green Bar & Grill",
+      metaDescription: "Legal notice for the Light Green Bar & Grill website: owner identification, terms of use and intellectual property.",
+      title: "Legal notice",
+      updated: "Last updated: August 2026",
+      intro:
+        "In compliance with Article 10 of Spanish Law 34/2002 on Information Society Services and Electronic Commerce (LSSI-CE), the identifying details of this website's owner are provided below.",
+      sections: [
+        {
+          heading: "1. Owner details",
+          body: [
+            "Owner: Mitrica Claudio Nicusor.",
+            "Tax ID (NIF): Z4127143M.",
+            "Address: C. San Blas, Local 4, 38639 Golf del Sur, San Miguel de Abona, Santa Cruz de Tenerife, Spain.",
+            "Activity: Restaurant / bar-grill.",
+            "Contact: via WhatsApp or phone, +39 351 173 3108.",
+          ],
+        },
+        {
+          heading: "2. Purpose of the website",
+          body: [
+            "This website is informational: it presents the venue, its menu and contact details, and lets guests start a table booking via WhatsApp. No sales or payments are made through the website.",
+          ],
+        },
+        {
+          heading: "3. Terms of use",
+          body: [
+            "Accessing and using this website makes you a user and implies acceptance of the terms in this Legal Notice. Users agree to make appropriate use of the content and services offered, and not to use them for unlawful purposes or in bad faith.",
+          ],
+        },
+        {
+          heading: "4. Intellectual property",
+          body: [
+            "The text, photographs, logos and other content on this website belong to its owner or are used with due authorisation, and are protected by intellectual property law. Reproduction, in whole or in part, without prior authorisation is prohibited.",
+          ],
+        },
+        {
+          heading: "5. Liability",
+          body: [
+            "The owner does not guarantee the total absence of errors in the content or continuous availability of the website, and is not liable for damages arising from misuse of this website by third parties.",
+          ],
+        },
+        {
+          heading: "6. Applicable law",
+          body: [
+            "These terms are governed by Spanish law. Any dispute arising from the use of this website will be submitted to the competent Spanish courts.",
+          ],
+        },
+      ],
+    },
+    privacy: {
+      metaTitle: "Privacy policy — Light Green Bar & Grill",
+      metaDescription: "Privacy policy for the Light Green Bar & Grill website: what data the booking form collects and how it's handled.",
+      title: "Privacy policy",
+      updated: "Last updated: August 2026",
+      intro:
+        "At Light Green Bar & Grill we respect your privacy. This policy explains, in plain terms, what data this website collects and why.",
+      sections: [
+        {
+          heading: "1. Data controller",
+          body: [
+            "Mitrica Claudio Nicusor, Tax ID Z4127143M, address C. San Blas, Local 4, 38639 Golf del Sur, San Miguel de Abona, Santa Cruz de Tenerife.",
+          ],
+        },
+        {
+          heading: "2. What data is collected",
+          body: [
+            "The table booking form asks for your name, date, time, number of guests and, optionally, an extra message (allergies, high chair, etc.).",
+            "This data is never sent to or stored on any server: the form only generates an already-written WhatsApp message, which opens in your own WhatsApp so you can decide whether to send it. From that point on, the conversation is subject to WhatsApp's (Meta's) own privacy policy.",
+            "The website's chat assistant works the same way: it's an automated assistant that runs entirely in your browser, sends no data to any external server, and doesn't use internet-connected AI.",
+          ],
+        },
+        {
+          heading: "3. Purpose of processing",
+          body: [
+            "To handle your table booking request and enable direct contact with you via WhatsApp, Messenger or phone call.",
+          ],
+        },
+        {
+          heading: "4. Legal basis",
+          body: [
+            "The legal basis is your consent, given by voluntarily filling in the form and sending the resulting WhatsApp message.",
+          ],
+        },
+        {
+          heading: "5. Sharing data with third parties",
+          body: [
+            "No data is shared with third parties. The only communication is the one you send yourself via WhatsApp or Messenger, platforms operated by Meta Platforms Ireland Limited, whose privacy policy is available at whatsapp.com/legal/privacy-policy and facebook.com/privacy/policy.",
+          ],
+        },
+        {
+          heading: "6. Data retention",
+          body: [
+            "Since no data is stored on this website's servers, we do not retain any data ourselves. Messages you send via WhatsApp are retained according to your own WhatsApp account settings.",
+          ],
+        },
+        {
+          heading: "7. Your rights",
+          body: [
+            "You can exercise your rights of access, rectification, erasure, objection, restriction of processing and portability by messaging us on WhatsApp or calling +39 351 173 3108.",
+          ],
+        },
+      ],
+    },
+    cookies: {
+      metaTitle: "Cookie policy — Light Green Bar & Grill",
+      metaDescription: "Cookie policy for the Light Green Bar & Grill website: which cookies are used and how to manage them.",
+      title: "Cookie policy",
+      updated: "Last updated: August 2026",
+      intro:
+        "This website only uses the technical cookies strictly necessary for it to work. We do not use analytics, advertising or third-party tracking cookies.",
+      sections: [
+        {
+          heading: "1. What is a cookie",
+          body: [
+            "A cookie is a small file that a website can store in your browser to remember information about your visit.",
+          ],
+        },
+        {
+          heading: "2. Cookies used on this site",
+          body: [
+            "This website does not install its own analytics, advertising or social media cookies. Our hosting provider (Vercel) may use strictly necessary technical cookies to serve the site securely, which do not require consent under current regulations.",
+            "If analytics or advertising tools are added in the future, this policy will be updated and your consent will be requested before they are activated.",
+          ],
+        },
+        {
+          heading: "3. Managing cookies",
+          body: [
+            "You can allow, block or delete cookies stored on your device through your browser settings. Note that blocking certain cookies may affect how the website works.",
+          ],
+        },
+      ],
+    },
   },
   menuPage: {
     metaTitle: "Digital Menu — Light Green Bar & Grill, Golf del Sur",

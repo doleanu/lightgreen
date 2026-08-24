@@ -112,7 +112,7 @@ export function Site({ locale }: { locale: Locale }) {
                 <Star key={i} />
               ))}
               <span className="ml-1 text-base font-bold text-ink">4,7</span>
-              <span className="text-sm text-ink-faint">{d.hero.ratingSuffix}</span>
+              <span className="text-sm text-ink-faint">(24) {d.hero.ratingSuffix}</span>
             </div>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -326,6 +326,53 @@ export function Site({ locale }: { locale: Locale }) {
         </div>
       </section>
 
+      {/* ============ EVENTOS ============ */}
+      <section id="eventos" className="relative bg-cream py-24 sm:py-32">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="text-center">
+            <MonoLabel>{d.eventos.label}</MonoLabel>
+            <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight text-ink sm:text-5xl">
+              {d.eventos.titlePre}
+              <span className="warm-glow">{d.eventos.titleWarm}</span>
+            </h2>
+            <p className="mt-5 mx-auto max-w-lg text-ink-soft font-light leading-relaxed">
+              {d.eventos.intro}
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-4 sm:grid-cols-2">
+            {d.eventos.weekly.map((ev, i) => (
+              <Reveal key={ev.title} delay={`${i * 0.1}s`}>
+                <div className="warm-card h-full rounded-2xl border border-terracotta/15 bg-cream-card p-6">
+                  <p className="font-display text-xl font-bold text-ink">{ev.title}</p>
+                  <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-terracotta">
+                    {ev.schedule}
+                  </p>
+                  <p className="mt-1 text-sm text-ink-soft font-light">{ev.note}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay="0.2s" className="mt-10">
+            <p className="text-center text-xs uppercase tracking-widest2 text-terracotta/90">
+              {d.eventos.specialLabel}
+            </p>
+            <div className="warm-card mx-auto mt-5 max-w-3xl rounded-[2rem] bg-terracotta px-8 py-12 text-center shadow-2xl shadow-terracotta/30 sm:px-16 sm:py-16">
+              <p className="font-display text-3xl font-extrabold leading-tight text-cream sm:text-4xl">
+                {d.eventos.specialTitle}
+              </p>
+              <p className="mt-4 mx-auto max-w-xl text-base font-light leading-relaxed text-cream/90 sm:text-lg">
+                {d.eventos.specialText}
+              </p>
+              <p className="mt-6 font-sans text-xs font-semibold uppercase tracking-widest2 text-olive-bright">
+                {d.eventos.specialWhen}
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ============ RESEÑAS — sin contador, solo la nota ============ */}
       <section id="resenas" className="relative bg-cream-deep py-20 sm:py-28">
         <div className="mx-auto max-w-4xl px-5 sm:px-8 text-center">
@@ -336,7 +383,7 @@ export function Site({ locale }: { locale: Locale }) {
             ))}
           </div>
           <p className="mt-4 font-display text-5xl font-extrabold text-ink">4,7</p>
-          <p className="mt-2 text-sm text-ink-faint">{d.resenas.ratingLabel}</p>
+          <p className="mt-2 text-sm text-ink-faint">{d.resenas.ratingLabel} (24)</p>
           <p className="mt-8 max-w-lg mx-auto text-ink-soft font-light leading-relaxed">
             {d.resenas.para}
           </p>
@@ -456,7 +503,18 @@ export function Site({ locale }: { locale: Locale }) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo/light-green-logo.jpg" alt="Light Green Bar & Grill" className="h-14 w-auto rounded-lg" />
           <p className="text-xs text-cream/50">{business.address}</p>
-          <p className="text-[0.65rem] uppercase tracking-widest2 text-cream/35">{d.footer.demo}</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[0.65rem] uppercase tracking-widest2 text-cream/50">
+            <a href={localePath(locale, "/aviso-legal")} className="hover:text-cream">
+              {d.footer.legalNotice}
+            </a>
+            <a href={localePath(locale, "/privacidad")} className="hover:text-cream">
+              {d.footer.privacy}
+            </a>
+            <a href={localePath(locale, "/cookies")} className="hover:text-cream">
+              {d.footer.cookies}
+            </a>
+          </div>
+          <p className="text-[0.65rem] text-cream/35">{d.footer.copyright}</p>
           <p className="text-xs text-cream/40">
             {d.footer.webBy}{" "}
             <a href="https://mojoweb.es" className="text-olive-bright hover:text-cream">

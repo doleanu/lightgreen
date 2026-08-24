@@ -153,7 +153,18 @@ export function DigitalMenu({ locale }: { locale: Locale }) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo/light-green-logo.jpg" alt="Light Green Bar & Grill" className="h-14 w-auto rounded-lg" />
           <p className="text-xs text-cream/50">{business.address}</p>
-          <p className="text-[0.65rem] uppercase tracking-widest2 text-cream/35">{d.footer.demo}</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[0.65rem] uppercase tracking-widest2 text-cream/50">
+            <a href={localePath(locale, "/aviso-legal")} className="hover:text-cream">
+              {d.footer.legalNotice}
+            </a>
+            <a href={localePath(locale, "/privacidad")} className="hover:text-cream">
+              {d.footer.privacy}
+            </a>
+            <a href={localePath(locale, "/cookies")} className="hover:text-cream">
+              {d.footer.cookies}
+            </a>
+          </div>
+          <p className="text-[0.65rem] text-cream/35">{d.footer.copyright}</p>
           <p className="text-xs text-cream/40">
             {d.footer.webBy}{" "}
             <a href="https://mojoweb.es" className="text-olive-bright hover:text-cream">

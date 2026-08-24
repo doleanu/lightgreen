@@ -345,7 +345,7 @@ export function Site({ locale }: { locale: Locale }) {
               <Reveal key={ev.title} delay={`${i * 0.1}s`}>
                 <div className="warm-card h-full overflow-hidden rounded-2xl border border-terracotta/15 bg-cream-card">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={ev.photo} alt={ev.alt} className="h-48 w-full object-cover" loading="lazy" />
+                  <img src={ev.photo} alt={ev.alt} className="h-48 w-full object-cover object-top" loading="lazy" />
                   <div className="p-6">
                     <p className="font-display text-xl font-bold text-ink">{ev.title}</p>
                     <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-terracotta">
@@ -367,7 +367,7 @@ export function Site({ locale }: { locale: Locale }) {
               <img
                 src={d.eventos.specialPhoto}
                 alt={d.eventos.specialAlt}
-                className="h-56 w-full object-cover"
+                className="h-56 w-full object-cover object-[center_46%]"
                 loading="lazy"
               />
               <div className="bg-terracotta px-8 py-10 text-center sm:px-16 sm:py-12">

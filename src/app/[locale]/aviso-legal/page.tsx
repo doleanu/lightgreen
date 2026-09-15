@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LegalPage } from "@/components/LegalPage";
 import { DICTS, LOCALES, type Locale } from "@/lib/dict";
+import { SITE_URL } from "@/lib/seo";
 
 export function generateStaticParams() {
   return LOCALES.filter((l) => l !== "es").map((locale) => ({ locale }));
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: d.legal.legalNotice.metaTitle,
     description: d.legal.legalNotice.metaDescription,
-    alternates: { languages: { es: "/aviso-legal", en: "/en/aviso-legal" } },
+    alternates: { canonical: `${SITE_URL}/${locale}/aviso-legal`, languages: { es: "/aviso-legal", en: "/en/aviso-legal" } },
   };
 }
 

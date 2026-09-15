@@ -163,7 +163,7 @@ const es: Dict = {
   meta: {
     title: "Light Green Bar & Grill — Parrilla argentina en Golf del Sur, Tenerife",
     description:
-      "Light Green Bar & Grill, Golf del Sur (San Blas): parrilla argentina con carne de vaca canaria de pasto (grass-fed), chimichurri casero y cortes premium. 4,7★ en Google. C. San Blas, Local 4. Abierto todos los días 11:00–23:00.",
+      "Light Green Bar & Grill, Golf del Sur (San Blas): parrilla argentina con carne de vaca canaria de pasto (grass-fed), chimichurri casero y cortes premium. 4,7★ en Google. C. San Blas, Local 4. Abierto todos los días desde las 17:00 (domingos también desde las 10:00).",
     ogDescription:
       "Carne de vaca canaria de pasto (grass-fed) al fuego vivo, chimichurri casero y cortes premium, en el centro comercial San Blas, Golf del Sur.",
   },
@@ -303,11 +303,11 @@ const es: Dict = {
         alt: "Dúo Sax N' Lounge tocando saxofón y teclado en directo",
       },
     ],
-    specialLabel: "Próximo evento especial",
+    specialLabel: "Noches temáticas",
     specialTitle: "Noche Latina con DJ Adrián",
     specialText:
-      "Humo de la brasa y ritmos latinos en Light Green — toda la noche a puro sabor latino.",
-    specialWhen: "Viernes 4 de septiembre · 18:00 – 24:00",
+      "Humo de la brasa y ritmos latinos — de vez en cuando encendemos la pista con DJ Adrián. Síguenos en Instagram para no perderte la próxima.",
+    specialWhen: "Fechas anunciadas por Instagram y WhatsApp",
     specialPhoto: "/photos/noche-latina-real.jpg",
     specialAlt: "DJ Adrián pinchando en la Noche Latina de Light Green",
   },
@@ -331,7 +331,7 @@ const es: Dict = {
       },
       {
         q: "¿Cuál es el horario?",
-        a: "Todos los días de 11:00 a 23:00.",
+        a: "Todos los días de 17:00 a 00:00. Los domingos abrimos también de 10:00 a 14:00 para el servicio de mediodía.",
       },
       {
         q: "¿Se puede reservar?",
@@ -365,7 +365,7 @@ const es: Dict = {
     titleWarm: "San Blas",
     whereLabel: "Dónde",
     hoursLabel: "Horario",
-    hoursValue: "Todos los días\n11:00–23:00",
+    hoursValue: "Lun–Sáb: 17:00–00:00\nDom: 10:00–14:00 y 17:00–00:00",
     contactLabel: "Contacto",
     contactValue: "WhatsApp disponible",
     ctaWhatsapp: "Escribir por WhatsApp",
@@ -525,7 +525,7 @@ const es: Dict = {
     titleWarm: "al detalle",
     subtitle:
       "La carta completa de Light Green, con precios siempre actualizados — la misma que verías al escanear el QR de tu mesa.",
-    grillNote: "La parrilla está disponible a partir de las 18:00 · el resto de la carta, todo el día.",
+    grillNote: "La parrilla está disponible a partir de las 18:00 · el resto de la carta, desde que abrimos.",
     tabs: [
       {
         key: "grill",
@@ -894,7 +894,7 @@ const en: Dict = {
   meta: {
     title: "Light Green Bar & Grill — Argentinian Grill in Golf del Sur, Tenerife",
     description:
-      "Light Green Bar & Grill, Golf del Sur (San Blas): Argentinian-style grill with grass-fed Canarian beef, homemade chimichurri and premium cuts. 4.7★ on Google. C. San Blas, Local 4. Open every day 11:00–23:00.",
+      "Light Green Bar & Grill, Golf del Sur (San Blas): Argentinian-style grill with grass-fed Canarian beef, homemade chimichurri and premium cuts. 4.7★ on Google. C. San Blas, Local 4. Open every day from 5pm (Sundays also from 10am).",
     ogDescription:
       "Grass-fed Canarian beef grilled over open flame, homemade chimichurri and premium cuts, in the San Blas shopping centre, Golf del Sur.",
   },
@@ -1034,11 +1034,11 @@ const en: Dict = {
         alt: "Sax N' Lounge duo playing saxophone and keys live",
       },
     ],
-    specialLabel: "Coming up",
+    specialLabel: "Theme nights",
     specialTitle: "Noche Latina with DJ Adrián",
     specialText:
-      "Smoke off the grill and Latin rhythms at Light Green — a full night of pure Latin flavour.",
-    specialWhen: "Friday, September 4 · 6:00 PM – Midnight",
+      "Smoke off the grill and Latin rhythms — every so often we light up the dance floor with DJ Adrián. Follow us on Instagram so you don't miss the next one.",
+    specialWhen: "Dates announced on Instagram & WhatsApp",
     specialPhoto: "/photos/noche-latina-real.jpg",
     specialAlt: "DJ Adrián spinning at Light Green's Noche Latina",
   },
@@ -1062,7 +1062,7 @@ const en: Dict = {
       },
       {
         q: "What are the opening hours?",
-        a: "Every day from 11:00 to 23:00.",
+        a: "Every day from 5pm to midnight. On Sundays we also open from 10am to 2pm for lunch service.",
       },
       {
         q: "Can I book a table?",
@@ -1095,7 +1095,7 @@ const en: Dict = {
     titleWarm: "San Blas",
     whereLabel: "Where",
     hoursLabel: "Hours",
-    hoursValue: "Every day\n11:00–23:00",
+    hoursValue: "Mon–Sat: 5pm–midnight\nSun: 10am–2pm & 5pm–midnight",
     contactLabel: "Contact",
     contactValue: "WhatsApp available",
     ctaWhatsapp: "Message on WhatsApp",
@@ -1255,7 +1255,7 @@ const en: Dict = {
     titleWarm: "in detail",
     subtitle:
       "The full Light Green menu, with always up-to-date prices — the same one you'd see scanning the QR code on your table.",
-    grillNote: "Grill menu is available starting from 6 PM. Rest of the menu is available all day round.",
+    grillNote: "Grill menu is available starting from 6 PM. Rest of the menu, from opening time.",
     tabs: [
       {
         key: "grill",

@@ -18,7 +18,7 @@ export const business = {
     "https://www.google.com/maps/search/?api=1&query=Light+Green+Bar+%26+Grill%2C+Calle+San+Blas%2C+Local+4%2C+Golf+del+Sur",
   priceRange: "€20–30 por persona",
   rating: "4,7★ en Google",
-  hours: "Todos los días, 11:00–23:00 (desayuno también los domingos)",
+  hours: "Lunes a sábado, 17:00–00:00. Domingo, 10:00–14:00 y 17:00–00:00 (también almuerzo)",
 };
 
 // Dish mentions sourced from the Google Business description and reviews —

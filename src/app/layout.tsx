@@ -60,21 +60,43 @@ const jsonLd = {
   priceRange: "€20–30",
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: "4.7",
-    bestRating: "5",
-    reviewCount: "24",
+    ratingValue: 4.7,
+    bestRating: 5,
+    reviewCount: 29,
   },
+  // Evening service every day, plus a Sunday lunch sitting — matches the
+  // venue's real Google Business Profile hours (checked 2026-09-15).
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: [
-        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday",
+        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
       ],
-      opens: "11:00",
-      closes: "23:00",
+      opens: "17:00",
+      closes: "00:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Sunday",
+      opens: "10:00",
+      closes: "14:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Sunday",
+      opens: "17:00",
+      closes: "00:00",
     },
   ],
 };
+
+// Every route is prerendered statically (see the build output), so this root
+// layout can't know the locale server-side without opting the whole site out
+// of static rendering — not worth it for an attribute Google doesn't use for
+// language targeting anyway (hreflang above already handles that correctly).
+// This one-line script keeps the actual DOM attribute honest for the case
+// that does care: screen readers and browser features like spell-check.
+const setHtmlLangScript = `document.documentElement.lang=location.pathname.startsWith("/en")?"en":"es";`;
 
 export default function RootLayout({
   children,
@@ -82,6 +104,10 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${sans.variable} ${display.variable}`}>
       <body className="font-sans antialiased bg-cream text-ink">
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: setHtmlLangScript }}
+        />
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger

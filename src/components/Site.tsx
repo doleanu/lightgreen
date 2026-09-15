@@ -112,7 +112,7 @@ export function Site({ locale }: { locale: Locale }) {
                 <Star key={i} />
               ))}
               <span className="ml-1 text-base font-bold text-ink">4,7</span>
-              <span className="text-sm text-ink-faint">(24) {d.hero.ratingSuffix}</span>
+              <span className="text-sm text-ink-faint">(29) {d.hero.ratingSuffix}</span>
             </div>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -396,7 +396,7 @@ export function Site({ locale }: { locale: Locale }) {
             ))}
           </div>
           <p className="mt-4 font-display text-5xl font-extrabold text-ink">4,7</p>
-          <p className="mt-2 text-sm text-ink-faint">{d.resenas.ratingLabel} (24)</p>
+          <p className="mt-2 text-sm text-ink-faint">{d.resenas.ratingLabel} (29)</p>
           <p className="mt-8 max-w-lg mx-auto text-ink-soft font-light leading-relaxed">
             {d.resenas.para}
           </p>
@@ -405,6 +405,22 @@ export function Site({ locale }: { locale: Locale }) {
 
       {/* ============ PREGUNTAS FRECUENTES — SEO + IA ============ */}
       <section id="faq" className="relative bg-cream py-20 sm:py-28">
+        {/* FAQPage rich-result eligibility — mirrors the visible Q&A below verbatim. */}
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: d.faq.items.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            }),
+          }}
+        />
         <div className="mx-auto max-w-3xl px-5 sm:px-8">
           <div className="text-center">
             <MonoLabel>{d.faq.label}</MonoLabel>

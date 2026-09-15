@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { DigitalMenu } from "@/components/DigitalMenu";
 import { DICTS, LOCALES, type Locale } from "@/lib/dict";
-import { OG_IMAGE, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from "@/lib/seo";
+import { OG_IMAGE, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT, SITE_URL } from "@/lib/seo";
 
 export function generateStaticParams() {
   return LOCALES.filter((l) => l !== "es").map((locale) => ({ locale }));
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: d.menuPage.metaTitle,
     description: d.menuPage.metaDescription,
-    alternates: { languages: { es: "/carta", en: "/en/carta" } },
+    alternates: { canonical: `${SITE_URL}/${locale}/carta`, languages: { es: "/carta", en: "/en/carta" } },
     openGraph: {
       title: d.menuPage.metaTitle,
       description: d.menuPage.metaDescription,

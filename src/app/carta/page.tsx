@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { DigitalMenu } from "@/components/DigitalMenu";
 import { DICTS } from "@/lib/dict";
-import { OG_IMAGE, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from "@/lib/seo";
+import { OG_IMAGE, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT, SITE_URL } from "@/lib/seo";
 
 const d = DICTS.es;
 
 export const metadata: Metadata = {
   title: d.menuPage.metaTitle,
   description: d.menuPage.metaDescription,
-  alternates: { languages: { es: "/carta", en: "/en/carta" } },
+  alternates: { canonical: `${SITE_URL}/carta`, languages: { es: "/carta", en: "/en/carta" } },
   openGraph: {
     title: d.menuPage.metaTitle,
     description: d.menuPage.metaDescription,

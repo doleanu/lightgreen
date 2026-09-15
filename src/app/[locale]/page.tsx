@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Site } from "@/components/Site";
 import { DICTS, LOCALES, type Locale } from "@/lib/dict";
-import { OG_IMAGE, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from "@/lib/seo";
+import { OG_IMAGE, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT, SITE_URL } from "@/lib/seo";
 
 export function generateStaticParams() {
   return LOCALES.filter((l) => l !== "es").map((locale) => ({ locale }));
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: d.meta.title,
     description: d.meta.description,
-    alternates: { languages: { es: "/", en: "/en" } },
+    alternates: { canonical: `${SITE_URL}/${locale}`, languages: { es: "/", en: "/en" } },
     openGraph: {
       title: d.meta.title,
       description: d.meta.ogDescription,

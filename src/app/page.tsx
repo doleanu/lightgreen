@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Site } from "@/components/Site";
 import { DICTS } from "@/lib/dict";
-import { OG_IMAGE, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT } from "@/lib/seo";
+import { OG_IMAGE, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT, SITE_URL } from "@/lib/seo";
 
 const d = DICTS.es;
 
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "carne de vacuno canario Tenerife",
     "carne a la brasa Golf del Sur",
   ],
-  alternates: { languages: { es: "/", en: "/en" } },
+  alternates: { canonical: SITE_URL, languages: { es: "/", en: "/en" } },
   openGraph: {
     title: d.meta.title,
     description: d.meta.ogDescription,

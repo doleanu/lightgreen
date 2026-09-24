@@ -171,8 +171,8 @@ export function DigitalMenu({ locale }: { locale: Locale }) {
           <p className="text-[0.65rem] text-cream/35">{d.footer.copyright}</p>
           <p className="text-xs text-cream/40">
             {d.footer.webBy}{" "}
-            <a href="https://mojoweb.es" className="text-olive-bright hover:text-cream">
-              MojoWeb
+            <a href="https://webhosteleros.es" className="text-olive-bright hover:text-cream">
+              WebHosteleros
             </a>
           </p>
         </div>

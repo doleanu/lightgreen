@@ -2,6 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Bitter } from "next/font/google";
 import { ChatWidget } from "@/components/ChatWidget";
 import { SITE_URL, OG_IMAGE, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT, SCHEMA_IMAGE } from "@/lib/seo";
+import { business } from "@/lib/chatAssistant";
+
+const MAPS_URL = business.mapsUrl;
 import "./globals.css";
 
 const sans = Inter({
@@ -46,6 +49,11 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
   name: "Light Green Bar & Grill",
+  url: SITE_URL,
+  hasMenu: `${SITE_URL}/carta`,
+  // Both URLs already verified/used elsewhere in the codebase (chatAssistant.ts)
+  // — no Instagram handle is confirmed anywhere, so it's deliberately omitted.
+  sameAs: ["https://www.facebook.com/lightgreentenerife", MAPS_URL],
   servesCuisine: ["Argentinian", "Grill", "Steakhouse"],
   image: SCHEMA_IMAGE,
   address: {

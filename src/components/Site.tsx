@@ -1,8 +1,10 @@
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import { GrillGrate, MusicNotes } from "@/components/art";
 import { ReservationForm } from "@/components/ReservationForm";
 import { business } from "@/lib/chatAssistant";
 import { DICTS, LOCALES, type Locale } from "@/lib/dict";
+import { SCHEMA_IMAGE } from "@/lib/seo";
 
 const TEL_HREF = business.phoneHref;
 const WA_URL = `https://wa.me/${business.whatsappNumber}`;
@@ -154,13 +156,16 @@ export function Site({ locale }: { locale: Locale }) {
           <div className="md:col-span-6 md:order-2">
             <Reveal>
               <figure className="warm-card overflow-hidden rounded-[1.75rem] border border-terracotta/20 shadow-xl shadow-ink/10">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/photos/hero-carne-real.jpg"
-                  alt={d.hero.photoAlt}
-                  className="h-[26rem] w-full object-cover sm:h-[32rem]"
-                  loading="eager"
-                />
+                <div className="relative h-[26rem] w-full sm:h-[32rem]">
+                  <Image
+                    src="/photos/hero-carne-real.jpg"
+                    alt={d.hero.photoAlt}
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                  />
+                </div>
                 <figcaption className="bg-char py-3 text-center font-sans text-[0.65rem] uppercase tracking-widest2 text-cream/70">
                   {d.hero.photoCaption}
                 </figcaption>
@@ -328,6 +333,42 @@ export function Site({ locale }: { locale: Locale }) {
 
       {/* ============ EVENTOS ============ */}
       <section id="eventos" className="relative bg-cream-deep py-24 sm:py-32">
+        {/* Event rich-result eligibility for the one dated special currently on — a
+            real specific date, unlike the weekly nights which have no single date. */}
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Event",
+              name: d.eventos.specialTitle,
+              description: d.eventos.specialText,
+              startDate: "2026-10-01T20:00:00+01:00",
+              endDate: "2026-10-02T00:00:00+01:00",
+              eventStatus: "https://schema.org/EventScheduled",
+              eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+              image: SCHEMA_IMAGE,
+              location: {
+                "@type": "Place",
+                name: "Light Green Bar & Grill",
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: "C. San Blas, Local 4",
+                  addressLocality: "Golf del Sur, San Miguel de Abona",
+                  addressRegion: "Santa Cruz de Tenerife",
+                  postalCode: "38639",
+                  addressCountry: "ES",
+                },
+              },
+              organizer: {
+                "@type": "Restaurant",
+                name: "Light Green Bar & Grill",
+                url: "https://www.lightgreen.es",
+              },
+            }),
+          }}
+        />
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="text-center">
             <MonoLabel>{d.eventos.label}</MonoLabel>
@@ -340,12 +381,14 @@ export function Site({ locale }: { locale: Locale }) {
             </p>
           </div>
 
-          <div className="mt-14 grid gap-6 sm:grid-cols-2">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {d.eventos.weekly.map((ev, i) => (
               <Reveal key={ev.title} delay={`${i * 0.1}s`}>
                 <div className="warm-card h-full overflow-hidden rounded-2xl border border-terracotta/15 bg-cream-card">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={ev.photo} alt={ev.alt} className="h-48 w-full object-cover object-top" loading="lazy" />
+                  {ev.photo && (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img src={ev.photo} alt={ev.alt} className="h-48 w-full object-cover object-top" loading="lazy" />
+                  )}
                   <div className="p-6">
                     <p className="font-display text-xl font-bold text-ink">{ev.title}</p>
                     <p className="mt-2 text-sm font-semibold uppercase tracking-wide text-terracotta">
@@ -363,13 +406,15 @@ export function Site({ locale }: { locale: Locale }) {
               {d.eventos.specialLabel}
             </p>
             <div className="warm-card mx-auto mt-5 max-w-3xl overflow-hidden rounded-[2rem] shadow-2xl shadow-terracotta/30">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={d.eventos.specialPhoto}
-                alt={d.eventos.specialAlt}
-                className="h-56 w-full object-cover object-[center_46%]"
-                loading="lazy"
-              />
+              {d.eventos.specialPhoto && (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={d.eventos.specialPhoto}
+                  alt={d.eventos.specialAlt}
+                  className="h-56 w-full object-cover object-[center_46%]"
+                  loading="lazy"
+                />
+              )}
               <div className="bg-terracotta px-8 py-10 text-center sm:px-16 sm:py-12">
                 <p className="font-display text-3xl font-extrabold leading-tight text-cream sm:text-4xl">
                   {d.eventos.specialTitle}

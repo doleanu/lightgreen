@@ -83,13 +83,13 @@ export type Dict = {
     titlePre: string;
     titleWarm: string;
     intro: string;
-    weekly: { title: string; schedule: string; note: string; photo: string; alt: string }[];
+    weekly: { title: string; schedule: string; note: string; photo?: string; alt?: string }[];
     specialLabel: string;
     specialTitle: string;
     specialText: string;
     specialWhen: string;
-    specialPhoto: string;
-    specialAlt: string;
+    specialPhoto?: string;
+    specialAlt?: string;
   };
   resenas: {
     label: string;
@@ -163,7 +163,7 @@ const es: Dict = {
   meta: {
     title: "Light Green Bar & Grill — Parrilla argentina en Golf del Sur, Tenerife",
     description:
-      "Light Green Bar & Grill, Golf del Sur (San Blas): parrilla argentina con carne de vaca canaria de pasto (grass-fed), chimichurri casero y cortes premium. 4,7★ en Google. C. San Blas, Local 4. Abierto todos los días desde las 17:00 (domingos también desde las 10:00).",
+      "Parrilla argentina en Golf del Sur (San Blas), Tenerife: carne de vaca canaria de pasto, chimichurri casero y cortes premium. 4,7★ en Google.",
     ogDescription:
       "Carne de vaca canaria de pasto (grass-fed) al fuego vivo, chimichurri casero y cortes premium, en el centro comercial San Blas, Golf del Sur.",
   },
@@ -302,14 +302,17 @@ const es: Dict = {
         photo: "/photos/sax-lounge-real.jpg",
         alt: "Dúo Sax N' Lounge tocando saxofón y teclado en directo",
       },
+      {
+        title: "Golden Hits Friday",
+        schedule: "Todos los viernes",
+        note: "Clásicos 70s · 80s · 90s — karaoke y pista de baile",
+      },
     ],
-    specialLabel: "Noches temáticas",
-    specialTitle: "Noche Latina con DJ Adrián",
+    specialLabel: "Próximo evento especial",
+    specialTitle: "Golden Hits — Especial de Navidad y Año Nuevo",
     specialText:
-      "Humo de la brasa y ritmos latinos — de vez en cuando encendemos la pista con DJ Adrián. Síguenos en Instagram para no perderte la próxima.",
-    specialWhen: "Fechas anunciadas por Instagram y WhatsApp",
-    specialPhoto: "/photos/noche-latina-real.jpg",
-    specialAlt: "DJ Adrián pinchando en la Noche Latina de Light Green",
+      "70s, 80s, 90s y mucho más disco latino para celebrar la Navidad y el Año Nuevo en Light Green.",
+    specialWhen: "Jueves 1 de octubre · 20:00 – 00:00",
   },
   resenas: {
     label: "06 · Lo que se dice",
@@ -339,7 +342,7 @@ const es: Dict = {
       },
       {
         q: "¿Tienen ambiente con música en vivo?",
-        a: "Sí — Kenny G en directo los lunes, jueves y sábado, y Sax N' Lounge los martes, de 20:00 a 23:00.",
+        a: "Sí — Kenny G en directo los lunes, jueves y sábado, Sax N' Lounge los martes (20:00 a 23:00), y Golden Hits Friday todos los viernes, con clásicos de los 70, 80 y 90.",
       },
     ],
   },
@@ -518,7 +521,7 @@ const es: Dict = {
   menuPage: {
     metaTitle: "Carta digital — Light Green Bar & Grill, Golf del Sur",
     metaDescription:
-      "Carta digital completa de Light Green Bar & Grill: cortes de vaca canaria de pasto (grass-fed), Wagyu, picanha brasileña, cordero y más. Parrilla desde las 18:00.",
+      "Carta digital de Light Green Bar & Grill: cortes de vaca canaria de pasto, Wagyu, picanha brasileña, cordero y más. Parrilla desde las 18:00.",
     backLabel: "← Volver al inicio",
     kicker: "Carta digital",
     title: "Cada corte, ",
@@ -894,7 +897,7 @@ const en: Dict = {
   meta: {
     title: "Light Green Bar & Grill — Argentinian Grill in Golf del Sur, Tenerife",
     description:
-      "Light Green Bar & Grill, Golf del Sur (San Blas): Argentinian-style grill with grass-fed Canarian beef, homemade chimichurri and premium cuts. 4.7★ on Google. C. San Blas, Local 4. Open every day from 5pm (Sundays also from 10am).",
+      "Argentinian-style grill in Golf del Sur (San Blas), Tenerife: grass-fed Canarian beef, homemade chimichurri and premium cuts. 4.7★ on Google.",
     ogDescription:
       "Grass-fed Canarian beef grilled over open flame, homemade chimichurri and premium cuts, in the San Blas shopping centre, Golf del Sur.",
   },
@@ -1033,14 +1036,17 @@ const en: Dict = {
         photo: "/photos/sax-lounge-real.jpg",
         alt: "Sax N' Lounge duo playing saxophone and keys live",
       },
+      {
+        title: "Golden Hits Friday",
+        schedule: "Every Friday",
+        note: "70s · 80s · 90s classics — sing-along & dance night",
+      },
     ],
-    specialLabel: "Theme nights",
-    specialTitle: "Noche Latina with DJ Adrián",
+    specialLabel: "Coming up",
+    specialTitle: "Golden Hits — Christmas & New Year Special",
     specialText:
-      "Smoke off the grill and Latin rhythms — every so often we light up the dance floor with DJ Adrián. Follow us on Instagram so you don't miss the next one.",
-    specialWhen: "Dates announced on Instagram & WhatsApp",
-    specialPhoto: "/photos/noche-latina-real.jpg",
-    specialAlt: "DJ Adrián spinning at Light Green's Noche Latina",
+      "70s, 80s, 90s and even more Latin disco to celebrate Christmas and New Year at Light Green.",
+    specialWhen: "Thursday, October 1 · 8:00 PM – Midnight",
   },
   resenas: {
     label: "06 · What people say",
@@ -1070,7 +1076,7 @@ const en: Dict = {
       },
       {
         q: "Is there live music?",
-        a: "Yes — Kenny G live on Monday, Thursday and Saturday, and Sax N' Lounge on Tuesdays, from 8 PM to 11 PM.",
+        a: "Yes — Kenny G live on Monday, Thursday and Saturday, Sax N' Lounge on Tuesdays (8 to 11 PM), and Golden Hits Friday every Friday, with 70s, 80s and 90s classics.",
       },
     ],
   },

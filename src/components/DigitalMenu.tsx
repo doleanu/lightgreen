@@ -16,7 +16,6 @@ export function DigitalMenu({ locale }: { locale: Locale }) {
   const d = DICTS[locale];
   const m = d.menuPage;
   const [activeTab, setActiveTab] = useState(m.tabs[0].key);
-  const tab = m.tabs.find((t) => t.key === activeTab) ?? m.tabs[0];
 
   return (
     <main className="relative min-h-screen bg-cream">
@@ -92,35 +91,40 @@ export function DigitalMenu({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      {/* ============ MENU SECTIONS (active tab) ============ */}
+      {/* ============ MENU SECTIONS (all tabs rendered; CSS toggles visibility so
+           the full menu stays in the server-rendered HTML for crawlers) ============ */}
       <section className="relative bg-cream py-16 sm:py-20">
         <div className="mx-auto max-w-3xl px-5 sm:px-8">
-          {tab.sections.map((section, sIdx) => (
-            <div key={section.title || `section-${sIdx}`} className={sIdx > 0 ? "mt-14" : ""}>
-              {section.title && (
-                <h2 className="mb-6 text-center font-display text-2xl font-extrabold text-ink sm:text-3xl">
-                  {section.title}
-                </h2>
-              )}
-              <div className="grid gap-4 sm:grid-cols-2">
-                {section.items.map((item, i) => (
-                  <Reveal key={item.name} delay={`${(i % 4) * 0.06}s`}>
-                    <div className="warm-card flex h-full flex-col justify-between rounded-2xl border border-terracotta/15 bg-cream-card p-5">
-                      <div>
-                        <div className="flex items-baseline justify-between gap-3">
-                          <p className="font-display text-lg font-bold text-ink">{item.name}</p>
-                          <span className="shrink-0 text-right font-sans text-sm font-bold text-terracotta">
-                            {item.price}
-                          </span>
+          {m.tabs.map((t) => (
+            <div key={t.key} className={t.key === activeTab ? "block" : "hidden"}>
+              {t.sections.map((section, sIdx) => (
+                <div key={section.title || `section-${sIdx}`} className={sIdx > 0 ? "mt-14" : ""}>
+                  {section.title && (
+                    <h2 className="mb-6 text-center font-display text-2xl font-extrabold text-ink sm:text-3xl">
+                      {section.title}
+                    </h2>
+                  )}
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {section.items.map((item, i) => (
+                      <Reveal key={item.name} delay={`${(i % 4) * 0.06}s`}>
+                        <div className="warm-card flex h-full flex-col justify-between rounded-2xl border border-terracotta/15 bg-cream-card p-5">
+                          <div>
+                            <div className="flex items-baseline justify-between gap-3">
+                              <p className="font-display text-lg font-bold text-ink">{item.name}</p>
+                              <span className="shrink-0 text-right font-sans text-sm font-bold text-terracotta">
+                                {item.price}
+                              </span>
+                            </div>
+                            {item.desc && (
+                              <p className="mt-2 text-sm text-ink-soft font-light leading-relaxed">{item.desc}</p>
+                            )}
+                          </div>
                         </div>
-                        {item.desc && (
-                          <p className="mt-2 text-sm text-ink-soft font-light leading-relaxed">{item.desc}</p>
-                        )}
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
+                      </Reveal>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           ))}
           <p className="mt-10 text-center text-xs text-ink-faint">{m.note}</p>

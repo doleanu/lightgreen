@@ -51,9 +51,12 @@ const jsonLd = {
   name: "Light Green Bar & Grill",
   url: SITE_URL,
   hasMenu: `${SITE_URL}/carta`,
-  // Both URLs already verified/used elsewhere in the codebase (chatAssistant.ts)
-  // — no Instagram handle is confirmed anywhere, so it's deliberately omitted.
-  sameAs: ["https://www.facebook.com/lightgreentenerife", MAPS_URL],
+  // All three verified live (real accounts/listing, not guessed).
+  sameAs: [
+    "https://www.facebook.com/lightgreentenerife",
+    "https://www.instagram.com/lightgreentenerife/",
+    MAPS_URL,
+  ],
   servesCuisine: ["Argentinian", "Grill", "Steakhouse"],
   image: SCHEMA_IMAGE,
   address: {

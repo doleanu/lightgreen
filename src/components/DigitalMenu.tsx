@@ -12,13 +12,45 @@ function localePath(locale: Locale, path: string) {
   return locale === "es" ? path : `/${locale}${path}`;
 }
 
+// "34,50 €" or "€34.50" → "34.50", for schema.org Offer.price (plain decimal).
+function parsePrice(price: string) {
+  return price.replace(/[€\s]/g, "").replace(",", ".");
+}
+
 export function DigitalMenu({ locale }: { locale: Locale }) {
   const d = DICTS[locale];
   const m = d.menuPage;
   const [activeTab, setActiveTab] = useState(m.tabs[0].key);
 
+  const menuJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    name: m.metaTitle,
+    hasMenuSection: m.tabs.map((tab) => ({
+      "@type": "MenuSection",
+      name: tab.label,
+      hasMenuItem: tab.sections.flatMap((section) =>
+        section.items.map((item) => ({
+          "@type": "MenuItem",
+          name: item.name,
+          description: item.desc,
+          offers: {
+            "@type": "Offer",
+            price: parsePrice(item.price),
+            priceCurrency: "EUR",
+          },
+        }))
+      ),
+    })),
+  };
+
   return (
     <main className="relative min-h-screen bg-cream">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(menuJsonLd) }}
+      />
       {/* ============ HEADER ============ */}
       <header className="sticky inset-x-0 top-0 z-40 border-b border-terracotta/15 bg-cream/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-5 py-3 sm:px-8">

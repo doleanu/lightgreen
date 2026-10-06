@@ -8,7 +8,7 @@ const d = DICTS.es;
 export const metadata: Metadata = {
   title: d.legal.legalNotice.metaTitle,
   description: d.legal.legalNotice.metaDescription,
-  alternates: { canonical: `${SITE_URL}/aviso-legal`, languages: { es: "/aviso-legal", en: "/en/aviso-legal" } },
+  alternates: { canonical: `${SITE_URL}/aviso-legal`, languages: { es: "/aviso-legal", en: "/en/aviso-legal", "x-default": "/aviso-legal" } },
 };
 
 export default function Page() {

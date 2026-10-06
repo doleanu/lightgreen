@@ -8,7 +8,7 @@ const d = DICTS.es;
 export const metadata: Metadata = {
   title: d.legal.cookies.metaTitle,
   description: d.legal.cookies.metaDescription,
-  alternates: { canonical: `${SITE_URL}/cookies`, languages: { es: "/cookies", en: "/en/cookies" } },
+  alternates: { canonical: `${SITE_URL}/cookies`, languages: { es: "/cookies", en: "/en/cookies", "x-default": "/cookies" } },
 };
 
 export default function Page() {

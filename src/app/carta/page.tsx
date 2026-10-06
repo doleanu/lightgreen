@@ -8,7 +8,7 @@ const d = DICTS.es;
 export const metadata: Metadata = {
   title: d.menuPage.metaTitle,
   description: d.menuPage.metaDescription,
-  alternates: { canonical: `${SITE_URL}/carta`, languages: { es: "/carta", en: "/en/carta" } },
+  alternates: { canonical: `${SITE_URL}/carta`, languages: { es: "/carta", en: "/en/carta", "x-default": "/carta" } },
   openGraph: {
     title: d.menuPage.metaTitle,
     description: d.menuPage.metaDescription,

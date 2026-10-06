@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: d.legal.privacy.metaTitle,
     description: d.legal.privacy.metaDescription,
-    alternates: { canonical: `${SITE_URL}/${locale}/privacidad`, languages: { es: "/privacidad", en: "/en/privacidad" } },
+    alternates: { canonical: `${SITE_URL}/${locale}/privacidad`, languages: { es: "/privacidad", en: "/en/privacidad", "x-default": "/privacidad" } },
   };
 }
 

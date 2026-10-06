@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: d.legal.legalNotice.metaTitle,
     description: d.legal.legalNotice.metaDescription,
-    alternates: { canonical: `${SITE_URL}/${locale}/aviso-legal`, languages: { es: "/aviso-legal", en: "/en/aviso-legal" } },
+    alternates: { canonical: `${SITE_URL}/${locale}/aviso-legal`, languages: { es: "/aviso-legal", en: "/en/aviso-legal", "x-default": "/aviso-legal" } },
   };
 }
 

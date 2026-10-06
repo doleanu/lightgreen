@@ -5,6 +5,9 @@ import { OG_IMAGE, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT, SITE_URL } from "@/lib/seo";
 
 const d = DICTS.es;
 
+// Re-render hourly so the special-event block drops off once its date passes.
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: d.meta.title,
   description: d.meta.description,
@@ -16,7 +19,7 @@ export const metadata: Metadata = {
     "carne de vacuno canario Tenerife",
     "carne a la brasa Golf del Sur",
   ],
-  alternates: { canonical: SITE_URL, languages: { es: "/", en: "/en" } },
+  alternates: { canonical: SITE_URL, languages: { es: "/", en: "/en", "x-default": "/" } },
   openGraph: {
     title: d.meta.title,
     description: d.meta.ogDescription,

@@ -31,8 +31,17 @@ function localePath(locale: Locale, path: string) {
   return locale === "es" ? path : `/${locale}${path}`;
 }
 
+// The special-event block and its Event JSON-LD are only rendered while the event
+// has not ended, so a stale date never shows up. Evaluated at build / ISR
+// revalidation time (pages export `revalidate`).
+function isSpecialUpcoming(end: string) {
+  const t = Date.parse(end);
+  return Number.isFinite(t) && t > Date.now();
+}
+
 export function Site({ locale }: { locale: Locale }) {
   const d = DICTS[locale];
+  const showSpecial = isSpecialUpcoming(d.eventos.specialEnd);
 
   return (
     <main className="relative">
@@ -92,10 +101,27 @@ export function Site({ locale }: { locale: Locale }) {
             </a>
           </div>
         </div>
+        {/* Mobile-only second row: the Menu + WhatsApp CTAs are hidden in the row above below sm. */}
+        <div className="mx-auto flex max-w-6xl items-center gap-2 px-5 pb-2.5 sm:hidden">
+          <a
+            href={localePath(locale, "/carta")}
+            className="inline-flex flex-1 items-center justify-center rounded-full bg-ember px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-cream transition-colors hover:bg-ember-soft"
+          >
+            {d.nav.menu}
+          </a>
+          <a
+            href={WA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex flex-1 items-center justify-center rounded-full border border-olive/50 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wide text-olive transition-colors hover:bg-olive hover:text-cream"
+          >
+            {d.nav.whatsapp}
+          </a>
+        </div>
       </header>
 
       {/* ============ HERO — editorial split, real photo ============ */}
-      <section id="top" className="relative overflow-hidden bg-cream pt-24">
+      <section id="top" className="relative overflow-hidden bg-cream pt-32 sm:pt-24">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-16 md:grid-cols-12 md:items-center">
           <div className="md:col-span-6 md:order-1">
             <MonoLabel>{d.hero.kicker}</MonoLabel>
@@ -333,6 +359,8 @@ export function Site({ locale }: { locale: Locale }) {
 
       {/* ============ EVENTOS ============ */}
       <section id="eventos" className="relative bg-cream-deep py-24 sm:py-32">
+        {showSpecial && (
+        <>
         {/* Event rich-result eligibility for the one dated special currently on — a
             real specific date, unlike the weekly nights which have no single date. */}
         <script
@@ -344,8 +372,8 @@ export function Site({ locale }: { locale: Locale }) {
               "@type": "Event",
               name: d.eventos.specialTitle,
               description: d.eventos.specialText,
-              startDate: "2026-10-01T20:00:00+01:00",
-              endDate: "2026-10-02T00:00:00+01:00",
+              startDate: d.eventos.specialStart,
+              endDate: d.eventos.specialEnd,
               eventStatus: "https://schema.org/EventScheduled",
               eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
               image: SCHEMA_IMAGE,
@@ -369,6 +397,8 @@ export function Site({ locale }: { locale: Locale }) {
             }),
           }}
         />
+        </>
+        )}
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <div className="text-center">
             <MonoLabel>{d.eventos.label}</MonoLabel>
@@ -401,6 +431,7 @@ export function Site({ locale }: { locale: Locale }) {
             ))}
           </div>
 
+          {showSpecial && (
           <Reveal delay="0.2s" className="mt-12">
             <p className="text-center text-xs uppercase tracking-widest2 text-terracotta/90">
               {d.eventos.specialLabel}
@@ -428,6 +459,7 @@ export function Site({ locale }: { locale: Locale }) {
               </div>
             </div>
           </Reveal>
+          )}
         </div>
       </section>
 

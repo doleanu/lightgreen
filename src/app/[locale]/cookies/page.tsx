@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: d.legal.cookies.metaTitle,
     description: d.legal.cookies.metaDescription,
-    alternates: { canonical: `${SITE_URL}/${locale}/cookies`, languages: { es: "/cookies", en: "/en/cookies" } },
+    alternates: { canonical: `${SITE_URL}/${locale}/cookies`, languages: { es: "/cookies", en: "/en/cookies", "x-default": "/cookies" } },
   };
 }
 

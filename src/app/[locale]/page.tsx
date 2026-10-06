@@ -10,6 +10,9 @@ export function generateStaticParams() {
 
 type Props = { params: Promise<{ locale: string }> };
 
+// Re-render hourly so the special-event block drops off once its date passes.
+export const revalidate = 3600;
+
 function isLocale(l: string): l is Locale {
   return (LOCALES as string[]).includes(l);
 }
@@ -21,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: d.meta.title,
     description: d.meta.description,
-    alternates: { canonical: `${SITE_URL}/${locale}`, languages: { es: "/", en: "/en" } },
+    alternates: { canonical: `${SITE_URL}/${locale}`, languages: { es: "/", en: "/en", "x-default": "/" } },
     openGraph: {
       title: d.meta.title,
       description: d.meta.ogDescription,

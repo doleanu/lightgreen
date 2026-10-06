@@ -8,7 +8,7 @@ const d = DICTS.es;
 export const metadata: Metadata = {
   title: d.legal.privacy.metaTitle,
   description: d.legal.privacy.metaDescription,
-  alternates: { canonical: `${SITE_URL}/privacidad`, languages: { es: "/privacidad", en: "/en/privacidad" } },
+  alternates: { canonical: `${SITE_URL}/privacidad`, languages: { es: "/privacidad", en: "/en/privacidad", "x-default": "/privacidad" } },
 };
 
 export default function Page() {

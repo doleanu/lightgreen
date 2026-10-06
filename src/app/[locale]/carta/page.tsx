@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: d.menuPage.metaTitle,
     description: d.menuPage.metaDescription,
-    alternates: { canonical: `${SITE_URL}/${locale}/carta`, languages: { es: "/carta", en: "/en/carta" } },
+    alternates: { canonical: `${SITE_URL}/${locale}/carta`, languages: { es: "/carta", en: "/en/carta", "x-default": "/carta" } },
     openGraph: {
       title: d.menuPage.metaTitle,
       description: d.menuPage.metaDescription,

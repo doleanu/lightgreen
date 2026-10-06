@@ -88,6 +88,10 @@ export type Dict = {
     specialTitle: string;
     specialText: string;
     specialWhen: string;
+    // ISO-8601 with offset. The special block + Event JSON-LD render only while
+    // specialEnd is in the future (see isSpecialUpcoming in Site.tsx).
+    specialStart: string;
+    specialEnd: string;
     specialPhoto?: string;
     specialAlt?: string;
   };
@@ -312,7 +316,12 @@ const es: Dict = {
     specialTitle: "Golden Hits — Especial de Navidad y Año Nuevo",
     specialText:
       "70s, 80s, 90s y mucho más disco latino para celebrar la Navidad y el Año Nuevo en Light Green.",
+    // TODO(client): the dates below are STALE (1 Oct 2026) and do not match the title.
+    // Set the real date here (specialStart/specialEnd + specialWhen text) and the
+    // "Próximo evento especial" block + Event JSON-LD reappear automatically.
     specialWhen: "Jueves 1 de octubre · 20:00 – 00:00",
+    specialStart: "2026-10-01T20:00:00+01:00",
+    specialEnd: "2026-10-02T00:00:00+01:00",
   },
   resenas: {
     label: "06 · Lo que se dice",
@@ -1046,7 +1055,12 @@ const en: Dict = {
     specialTitle: "Golden Hits — Christmas & New Year Special",
     specialText:
       "70s, 80s, 90s and even more Latin disco to celebrate Christmas and New Year at Light Green.",
+    // TODO(client): the dates below are STALE (1 Oct 2026) and do not match the title.
+    // Set the real date here (specialStart/specialEnd + specialWhen text) and the
+    // "Coming up" block + Event JSON-LD reappear automatically.
     specialWhen: "Thursday, October 1 · 8:00 PM – Midnight",
+    specialStart: "2026-10-01T20:00:00+01:00",
+    specialEnd: "2026-10-02T00:00:00+01:00",
   },
   resenas: {
     label: "06 · What people say",

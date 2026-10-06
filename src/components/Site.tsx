@@ -31,17 +31,50 @@ function localePath(locale: Locale, path: string) {
   return locale === "es" ? path : `/${locale}${path}`;
 }
 
-// The special-event block and its Event JSON-LD are only rendered while the event
-// has not ended, so a stale date never shows up. Evaluated at build / ISR
-// revalidation time (pages export `revalidate`).
-function isSpecialUpcoming(end: string) {
-  const t = Date.parse(end);
-  return Number.isFinite(t) && t > Date.now();
+// The Friday night is weekly, so the Event JSON-LD needs a concrete upcoming
+// date. Computed in Atlantic/Canary time (handles the DST offset change) at
+// build / ISR revalidation time (pages export `revalidate`).
+const EVENT_TZ = "Atlantic/Canary";
+
+function nextWeeklyOccurrence(e: { specialWeekday: number; specialStartTime: string; specialEndTime: string }, now: Date = new Date()) {
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat("en-CA", {
+      timeZone: EVENT_TZ, year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+    }).formatToParts(now).map((p) => [p.type, p.value]),
+  );
+  const y = Number(parts.year), m = Number(parts.month), day = Number(parts.day);
+  const nowMin = Number(parts.hour) * 60 + Number(parts.minute);
+  const todayWd = new Date(Date.UTC(y, m - 1, day)).getUTCDay();
+  const toMin = (t: string) => { const [h, mi] = t.split(":").map(Number); return h * 60 + mi; };
+  const startMin = toMin(e.specialStartTime);
+  const endMin = toMin(e.specialEndTime);
+  const overnight = endMin <= startMin;
+  let ahead = (e.specialWeekday - todayWd + 7) % 7;
+  // Today is the event day and it has already finished: next week.
+  if (ahead === 0 && !overnight && nowMin >= endMin) ahead = 7;
+  const dateOf = (offsetDays: number) => {
+    const dt = new Date(Date.UTC(y, m - 1, day + offsetDays));
+    return dt.toISOString().slice(0, 10);
+  };
+  const offsetOn = (isoDate: string) => {
+    const label = new Intl.DateTimeFormat("en-US", { timeZone: EVENT_TZ, timeZoneName: "longOffset" })
+      .formatToParts(new Date(`${isoDate}T12:00:00Z`)).find((p) => p.type === "timeZoneName")?.value ?? "GMT";
+    const mo = /GMT([+-]\d{2}):?(\d{2})?/.exec(label);
+    return mo ? `${mo[1]}:${mo[2] ?? "00"}` : "+00:00";
+  };
+  const startDate = dateOf(ahead);
+  const endDate = overnight ? dateOf(ahead + 1) : startDate;
+  return {
+    start: `${startDate}T${e.specialStartTime}:00${offsetOn(startDate)}`,
+    end: `${endDate}T${e.specialEndTime}:00${offsetOn(endDate)}`,
+  };
 }
 
 export function Site({ locale }: { locale: Locale }) {
   const d = DICTS[locale];
-  const showSpecial = isSpecialUpcoming(d.eventos.specialEnd);
+  const special = nextWeeklyOccurrence(d.eventos);
+  const showSpecial = true;
 
   return (
     <main className="relative">
@@ -372,8 +405,8 @@ export function Site({ locale }: { locale: Locale }) {
               "@type": "Event",
               name: d.eventos.specialTitle,
               description: d.eventos.specialText,
-              startDate: d.eventos.specialStart,
-              endDate: d.eventos.specialEnd,
+              startDate: special.start,
+              endDate: special.end,
               eventStatus: "https://schema.org/EventScheduled",
               eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
               image: SCHEMA_IMAGE,

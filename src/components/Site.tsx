@@ -428,6 +428,14 @@ export function Site({ locale }: { locale: Locale }) {
                 url: "https://www.lightgreen.es",
               },
               performer: { "@type": "PerformingGroup", name: d.eventos.specialTitle },
+              // Free entry (confirmed by the owner's team 2026-10-09).
+              offers: {
+                "@type": "Offer",
+                url: "https://www.lightgreen.es",
+                price: "0",
+                priceCurrency: "EUR",
+                availability: "https://schema.org/InStock",
+              },
             }),
           }}
         />
@@ -525,6 +533,12 @@ export function Site({ locale }: { locale: Locale }) {
                 className="mt-7 inline-block rounded-full bg-olive px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-cream transition-transform hover:scale-105"
               >
                 {d.eventos.celebrate.cta}
+              </a>
+              <a
+                href={localePath(locale, "/celebra")}
+                className="mt-4 block text-xs font-semibold uppercase tracking-widest2 text-terracotta underline-offset-4 hover:underline"
+              >
+                {d.eventos.celebrate.more}
               </a>
             </div>
           </Reveal>

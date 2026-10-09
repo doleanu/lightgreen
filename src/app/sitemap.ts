@@ -6,6 +6,7 @@ import { SITE_URL } from "@/lib/seo";
 const ROUTES: { path: string; priority: number; changeFrequency: "weekly" | "monthly" }[] = [
   { path: "", priority: 1, changeFrequency: "weekly" },
   { path: "/carta", priority: 0.9, changeFrequency: "weekly" },
+  { path: "/celebra", priority: 0.8, changeFrequency: "monthly" },
   { path: "/aviso-legal", priority: 0.2, changeFrequency: "monthly" },
   { path: "/privacidad", priority: 0.2, changeFrequency: "monthly" },
   { path: "/cookies", priority: 0.2, changeFrequency: "monthly" },

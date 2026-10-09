@@ -103,6 +103,7 @@ export type Dict = {
       capacity: string;
       cta: string;
       ctaMessage: string;
+      more: string;
     };
   };
   resenas: {
@@ -155,6 +156,20 @@ export type Dict = {
     legalNotice: LegalDoc;
     privacy: LegalDoc;
     cookies: LegalDoc;
+  };
+  celebratePage: {
+    metaTitle: string;
+    metaDescription: string;
+    label: string;
+    h1: string;
+    intro: string;
+    includesTitle: string;
+    stepsTitle: string;
+    steps: { title: string; text: string }[];
+    faqTitle: string;
+    faq: { q: string; a: string }[];
+    ctaTitle: string;
+    back: string;
   };
   menuPage: {
     metaTitle: string;
@@ -344,6 +359,7 @@ const es: Dict = {
       capacity: "Amplio espacio al aire libre + sala interior · Hasta 60 personas",
       cta: "Pedir información por WhatsApp",
       ctaMessage: "¡Hola Light Green! Me gustaría información para celebrar un cumpleaños / evento privado.",
+      more: "Ver todos los detalles",
     },
   },
   resenas: {
@@ -367,6 +383,14 @@ const es: Dict = {
       {
         q: "¿Cuál es el horario?",
         a: "Todos los días de 9:30 a 23:00.",
+      },
+      {
+        q: "¿Dónde comer en Golf del Sur o San Blas, cerca del aeropuerto Tenerife Sur?",
+        a: "Light Green Bar & Grill está en el centro comercial San Blas, en pleno Golf del Sur (sur de Tenerife), a poca distancia en coche del aeropuerto Tenerife Sur. Parrilla argentina, tapas, mariscos y música en directo, todos los días de 9:30 a 23:00.",
+      },
+      {
+        q: "¿Hay música en directo en Golf del Sur?",
+        a: "Sí. En Light Green hay música en vivo varias noches por semana: Kenny G los lunes, jueves y sábados (20:00–23:00), Sax N' Lounge los martes y Golden Hits los viernes.",
       },
       {
         q: "¿Hacéis comida para llevar?",
@@ -557,6 +581,47 @@ const es: Dict = {
         },
       ],
     },
+  },
+  celebratePage: {
+    metaTitle: "Cumpleaños y fiestas privadas en Golf del Sur, Tenerife | Light Green",
+    metaDescription:
+      "Celebra tu cumpleaños, 18º cumpleaños o evento privado en Light Green Bar & Grill, Golf del Sur: espacio amplio al aire libre y sala interior para hasta 60 personas.",
+    label: "Celebraciones y eventos privados",
+    h1: "Cumpleaños y fiestas privadas en Golf del Sur",
+    intro:
+      "En Light Green Bar & Grill celebramos tu cumpleaños, tu 18º, una fiesta privada o el evento que tengas en mente. Tú trae los invitados; nosotros nos encargamos del resto: comida, bebidas, tarta, decoración y música, con espacio de sobra para hasta 60 personas.",
+    includesTitle: "Qué podemos preparar",
+    stepsTitle: "Cómo funciona",
+    steps: [
+      { title: "Escríbenos", text: "Mándanos un WhatsApp con la fecha y el número aproximado de invitados." },
+      { title: "Cuéntanos qué quieres", text: "Menú, tarta, decoración, música… lo adaptamos a tu celebración." },
+      { title: "Tú disfruta", text: "Nosotros lo dejamos todo preparado en Light Green, en Golf del Sur." },
+    ],
+    faqTitle: "Preguntas frecuentes",
+    faq: [
+      {
+        q: "¿Cuántas personas caben?",
+        a: "Hasta 60 personas, entre el amplio espacio al aire libre y la sala interior.",
+      },
+      {
+        q: "¿Qué incluye la celebración?",
+        a: "Podemos encargarnos de la decoración y los globos, una tarta personalizada, el menú de la fiesta, bebidas y cócteles, música y entretenimiento y la ambientación completa.",
+      },
+      {
+        q: "¿Se puede celebrar un 18º cumpleaños?",
+        a: "Sí, celebramos 18º cumpleaños, cumpleaños de todas las edades, fiestas privadas y eventos.",
+      },
+      {
+        q: "¿Cómo reservo?",
+        a: "Escríbenos por WhatsApp indicando la fecha y el número de invitados, y te contestamos con toda la información.",
+      },
+      {
+        q: "¿Dónde está Light Green?",
+        a: "En el centro comercial San Blas, Calle San Blas Local 4, Golf del Sur (San Miguel de Abona), en el sur de Tenerife. Abierto todos los días de 9:30 a 23:00.",
+      },
+    ],
+    ctaTitle: "¿Hablamos de tu celebración?",
+    back: "← Volver a Light Green",
   },
   menuPage: {
     metaTitle: "Carta digital — Light Green Bar & Grill, Golf del Sur",
@@ -1104,6 +1169,7 @@ const en: Dict = {
       capacity: "Large outdoor area + indoor room · Up to 60 people",
       cta: "Ask on WhatsApp",
       ctaMessage: "Hi Light Green! I'd like information about celebrating a birthday / private event.",
+      more: "See all the details",
     },
   },
   resenas: {
@@ -1127,6 +1193,14 @@ const en: Dict = {
       {
         q: "What are the opening hours?",
         a: "Every day from 9:30am to 11pm.",
+      },
+      {
+        q: "Where to eat in Golf del Sur or San Blas, near Tenerife South airport?",
+        a: "Light Green Bar & Grill is in the San Blas shopping centre, right in Golf del Sur (south Tenerife), a short drive from Tenerife South airport. Argentinian grill, tapas, seafood and live music, every day from 9:30am to 11pm.",
+      },
+      {
+        q: "Is there live music in Golf del Sur?",
+        a: "Yes. Light Green has live music several nights a week: Kenny G on Mondays, Thursdays and Saturdays (8pm–11pm), Sax N' Lounge on Tuesdays and Golden Hits on Fridays.",
       },
       {
         q: "Do you offer takeaway?",
@@ -1316,6 +1390,47 @@ const en: Dict = {
         },
       ],
     },
+  },
+  celebratePage: {
+    metaTitle: "Birthday Parties & Private Events in Golf del Sur, Tenerife | Light Green",
+    metaDescription:
+      "Celebrate your birthday, 18th or private event at Light Green Bar & Grill in Golf del Sur, Tenerife: a spacious outdoor area plus an indoor room for up to 60 people.",
+    label: "Celebrations & private events",
+    h1: "Birthday parties & private events in Golf del Sur",
+    intro:
+      "At Light Green Bar & Grill we host birthdays, 18th birthdays, private parties and events. You bring the guests, we take care of the rest: food, drinks, cake, decoration and music, with plenty of room for up to 60 people.",
+    includesTitle: "What we can arrange",
+    stepsTitle: "How it works",
+    steps: [
+      { title: "Message us", text: "Send us a WhatsApp with the date and the approximate number of guests." },
+      { title: "Tell us what you want", text: "Menu, cake, decoration, music… we tailor it to your celebration." },
+      { title: "Enjoy", text: "We get everything ready at Light Green, in Golf del Sur." },
+    ],
+    faqTitle: "Frequently asked questions",
+    faq: [
+      {
+        q: "How many people can you host?",
+        a: "Up to 60 people, across the spacious outdoor area and the indoor room.",
+      },
+      {
+        q: "What can be included?",
+        a: "We can take care of decoration and balloons, a custom cake, the party menu, drinks and cocktails, music and entertainment, and the full setup.",
+      },
+      {
+        q: "Can we celebrate an 18th birthday?",
+        a: "Yes, we host 18th birthdays, birthdays of all ages, private parties and events.",
+      },
+      {
+        q: "How do I book?",
+        a: "Message us on WhatsApp with the date and number of guests and we'll reply with all the details.",
+      },
+      {
+        q: "Where is Light Green?",
+        a: "In the San Blas shopping centre, Calle San Blas Local 4, Golf del Sur (San Miguel de Abona), in the south of Tenerife. Open every day from 9:30am to 11pm.",
+      },
+    ],
+    ctaTitle: "Shall we plan your celebration?",
+    back: "← Back to Light Green",
   },
   menuPage: {
     metaTitle: "Digital Menu — Light Green Bar & Grill, Golf del Sur",

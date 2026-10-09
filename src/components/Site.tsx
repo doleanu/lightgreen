@@ -427,6 +427,7 @@ export function Site({ locale }: { locale: Locale }) {
                 name: "Light Green Bar & Grill",
                 url: "https://www.lightgreen.es",
               },
+              performer: { "@type": "PerformingGroup", name: d.eventos.specialTitle },
             }),
           }}
         />

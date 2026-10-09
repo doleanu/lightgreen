@@ -369,6 +369,10 @@ const es: Dict = {
         a: "Todos los días de 9:30 a 23:00.",
       },
       {
+        q: "¿Hacéis comida para llevar?",
+        a: "Sí, puedes pedir para llevar en Light Green Bar & Grill, en Golf del Sur. Escríbenos por WhatsApp o pasa por el local (C. San Blas, Local 4).",
+      },
+      {
         q: "¿Se puede reservar?",
         a: "Sí, por WhatsApp o llamando al +39 351 173 3108.",
       },
@@ -1123,6 +1127,10 @@ const en: Dict = {
       {
         q: "What are the opening hours?",
         a: "Every day from 9:30am to 11pm.",
+      },
+      {
+        q: "Do you offer takeaway?",
+        a: "Yes, you can order takeaway at Light Green Bar & Grill in Golf del Sur. Message us on WhatsApp or drop by (C. San Blas, Local 4).",
       },
       {
         q: "Can I book a table?",

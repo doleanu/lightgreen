@@ -393,6 +393,18 @@ const es: Dict = {
         a: "Sí. En Light Green hay música en vivo varias noches por semana: Kenny G los lunes, jueves y sábados (20:00–23:00), Sax N' Lounge los martes y Golden Hits los viernes.",
       },
       {
+        q: "¿Tenéis terraza? ¿Se puede fumar?",
+        a: "Sí, tenemos terraza en Light Green Bar & Grill, y en ella se puede fumar.",
+      },
+      {
+        q: "¿Se admiten perros?",
+        a: "Sí, los perros son bienvenidos en Light Green Bar & Grill.",
+      },
+      {
+        q: "¿Aceptáis grupos?",
+        a: "Sí, recibimos grupos. Reserva por WhatsApp o desde el formulario de la web, indicando la fecha y el número de personas.",
+      },
+      {
         q: "¿Hacéis comida para llevar?",
         a: "Sí, puedes pedir para llevar en Light Green Bar & Grill, en Golf del Sur. Escríbenos por WhatsApp o pasa por el local (C. San Blas, Local 4).",
       },
@@ -1201,6 +1213,18 @@ const en: Dict = {
       {
         q: "Is there live music in Golf del Sur?",
         a: "Yes. Light Green has live music several nights a week: Kenny G on Mondays, Thursdays and Saturdays (8pm–11pm), Sax N' Lounge on Tuesdays and Golden Hits on Fridays.",
+      },
+      {
+        q: "Do you have a terrace? Is smoking allowed?",
+        a: "Yes, Light Green Bar & Grill has a terrace, and smoking is allowed there.",
+      },
+      {
+        q: "Are dogs allowed?",
+        a: "Yes, dogs are welcome at Light Green Bar & Grill.",
+      },
+      {
+        q: "Do you accept groups?",
+        a: "Yes, groups are welcome. Book on WhatsApp or through the website form with the date and number of guests.",
       },
       {
         q: "Do you offer takeaway?",

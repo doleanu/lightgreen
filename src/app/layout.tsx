@@ -69,6 +69,7 @@ const jsonLd = {
   },
   telephone: "+393511733108",
   priceRange: "€20–30",
+  acceptsReservations: true,
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: 4.7,

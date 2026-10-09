@@ -382,11 +382,11 @@ const es: Dict = {
       },
       {
         q: "¿Cuál es el horario?",
-        a: "Todos los días de 9:30 a 23:00; los viernes hasta las 00:00.",
+        a: "Todos los días de 11:00 a 00:00.",
       },
       {
         q: "¿Dónde comer en Golf del Sur o San Blas, cerca del aeropuerto Tenerife Sur?",
-        a: "Light Green Bar & Grill está en el centro comercial San Blas, en pleno Golf del Sur (sur de Tenerife), a poca distancia en coche del aeropuerto Tenerife Sur. Parrilla argentina, tapas, mariscos y música en directo, todos los días de 9:30 a 23:00 (viernes hasta las 00:00).",
+        a: "Light Green Bar & Grill está en el centro comercial San Blas, en pleno Golf del Sur (sur de Tenerife), a poca distancia en coche del aeropuerto Tenerife Sur. Parrilla argentina, tapas, mariscos y música en directo, todos los días de 11:00 a 00:00.",
       },
       {
         q: "¿Hay música en directo en Golf del Sur?",
@@ -444,7 +444,7 @@ const es: Dict = {
     titleWarm: "San Blas",
     whereLabel: "Dónde",
     hoursLabel: "Horario",
-    hoursValue: "Todos los días 9:30–23:00\nViernes hasta las 00:00",
+    hoursValue: "Todos los días\n11:00–00:00",
     contactLabel: "Contacto",
     contactValue: "WhatsApp disponible",
     ctaWhatsapp: "Escribir por WhatsApp",
@@ -629,7 +629,7 @@ const es: Dict = {
       },
       {
         q: "¿Dónde está Light Green?",
-        a: "En el centro comercial San Blas, Calle San Blas Local 4, Golf del Sur (San Miguel de Abona), en el sur de Tenerife. Abierto todos los días de 9:30 a 23:00 (viernes hasta las 00:00).",
+        a: "En el centro comercial San Blas, Calle San Blas Local 4, Golf del Sur (San Miguel de Abona), en el sur de Tenerife. Abierto todos los días de 11:00 a 00:00.",
       },
     ],
     ctaTitle: "¿Hablamos de tu celebración?",
@@ -1204,11 +1204,11 @@ const en: Dict = {
       },
       {
         q: "What are the opening hours?",
-        a: "Every day from 9:30am to 11pm; Fridays until midnight.",
+        a: "Every day from 11am to midnight.",
       },
       {
         q: "Where to eat in Golf del Sur or San Blas, near Tenerife South airport?",
-        a: "Light Green Bar & Grill is in the San Blas shopping centre, right in Golf del Sur (south Tenerife), a short drive from Tenerife South airport. Argentinian grill, tapas, seafood and live music, every day from 9:30am to 11pm (Fridays until midnight).",
+        a: "Light Green Bar & Grill is in the San Blas shopping centre, right in Golf del Sur (south Tenerife), a short drive from Tenerife South airport. Argentinian grill, tapas, seafood and live music, every day from 11am to midnight.",
       },
       {
         q: "Is there live music in Golf del Sur?",
@@ -1265,7 +1265,7 @@ const en: Dict = {
     titleWarm: "San Blas",
     whereLabel: "Where",
     hoursLabel: "Hours",
-    hoursValue: "Every day 9:30am–11pm\nFridays until midnight",
+    hoursValue: "Every day\n11am–midnight",
     contactLabel: "Contact",
     contactValue: "WhatsApp available",
     ctaWhatsapp: "Message on WhatsApp",
@@ -1450,7 +1450,7 @@ const en: Dict = {
       },
       {
         q: "Where is Light Green?",
-        a: "In the San Blas shopping centre, Calle San Blas Local 4, Golf del Sur (San Miguel de Abona), in the south of Tenerife. Open every day from 9:30am to 11pm (Fridays until midnight).",
+        a: "In the San Blas shopping centre, Calle San Blas Local 4, Golf del Sur (San Miguel de Abona), in the south of Tenerife. Open every day from 11am to midnight.",
       },
     ],
     ctaTitle: "Shall we plan your celebration?",

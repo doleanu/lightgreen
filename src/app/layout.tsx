@@ -75,28 +75,15 @@ const jsonLd = {
     bestRating: 5,
     reviewCount: 29,
   },
-  // Evening service every day, plus a Sunday lunch sitting — matches the
-  // venue's real Google Business Profile hours (checked 2026-09-15).
+  // Open every day 09:30-23:00 (updated 2026-10-09 per the owner).
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: [
-        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
+        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday",
       ],
-      opens: "17:00",
-      closes: "00:00",
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: "Sunday",
-      opens: "10:00",
-      closes: "14:00",
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: "Sunday",
-      opens: "17:00",
-      closes: "00:00",
+      opens: "09:30",
+      closes: "23:00",
     },
   ],
 };

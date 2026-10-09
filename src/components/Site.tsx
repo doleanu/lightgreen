@@ -2,7 +2,7 @@ import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import { GrillGrate, MusicNotes } from "@/components/art";
 import { ReservationForm } from "@/components/ReservationForm";
-import { business } from "@/lib/chatAssistant";
+import { business, waHref } from "@/lib/chatAssistant";
 import { DICTS, LOCALES, type Locale } from "@/lib/dict";
 import { SCHEMA_IMAGE } from "@/lib/seo";
 
@@ -493,6 +493,40 @@ export function Site({ locale }: { locale: Locale }) {
             </div>
           </Reveal>
           )}
+
+          <Reveal delay="0.1s" className="mt-12">
+            <div className="warm-card mx-auto max-w-3xl rounded-[2rem] border border-terracotta/20 bg-cream-card px-8 py-10 text-center shadow-xl shadow-ink/10 sm:px-14 sm:py-12">
+              <MonoLabel>{d.eventos.celebrate.label}</MonoLabel>
+              <p className="mt-4 font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl">
+                {d.eventos.celebrate.title}
+              </p>
+              <p className="mx-auto mt-4 max-w-xl text-base font-light leading-relaxed text-ink-soft">
+                {d.eventos.celebrate.text}
+              </p>
+              <ul className="mt-8 grid gap-3 text-left sm:grid-cols-2 lg:grid-cols-3">
+                {d.eventos.celebrate.items.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-2.5 rounded-xl border border-terracotta/15 bg-cream px-4 py-3 text-sm text-ink"
+                  >
+                    <span className="text-terracotta" aria-hidden="true">→</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 text-xs font-semibold uppercase tracking-widest2 text-terracotta">
+                {d.eventos.celebrate.capacity}
+              </p>
+              <a
+                href={waHref(d.eventos.celebrate.ctaMessage)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-7 inline-block rounded-full bg-olive px-7 py-3.5 text-sm font-bold uppercase tracking-wide text-cream transition-transform hover:scale-105"
+              >
+                {d.eventos.celebrate.cta}
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 

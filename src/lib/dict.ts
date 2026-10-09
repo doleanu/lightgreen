@@ -95,6 +95,15 @@ export type Dict = {
     specialEndTime: string; // "HH:MM"; <= start means the next day
     specialPhoto?: string;
     specialAlt?: string;
+    celebrate: {
+      label: string;
+      title: string;
+      text: string;
+      items: string[];
+      capacity: string;
+      cta: string;
+      ctaMessage: string;
+    };
   };
   resenas: {
     label: string;
@@ -320,6 +329,22 @@ const es: Dict = {
     specialWeekday: 5,
     specialStartTime: "18:00",
     specialEndTime: "00:00",
+    celebrate: {
+      label: "Celebraciones y eventos privados",
+      title: "Celebra en Light Green",
+      text: "18º cumpleaños, cumpleaños, fiestas privadas y eventos. Tú trae los invitados, ¡del resto nos encargamos nosotros!",
+      items: [
+        "Decoración y globos",
+        "Tarta personalizada",
+        "Comida y menú para la fiesta",
+        "Bebidas y cócteles",
+        "Música y entretenimiento",
+        "Ambientación completa",
+      ],
+      capacity: "Amplio espacio al aire libre + sala interior · Hasta 60 personas",
+      cta: "Pedir información por WhatsApp",
+      ctaMessage: "¡Hola Light Green! Me gustaría información para celebrar un cumpleaños / evento privado.",
+    },
   },
   resenas: {
     label: "06 · Lo que se dice",
@@ -341,11 +366,15 @@ const es: Dict = {
       },
       {
         q: "¿Cuál es el horario?",
-        a: "Todos los días de 17:00 a 00:00. Los domingos abrimos también de 10:00 a 14:00 para el servicio de mediodía.",
+        a: "Todos los días de 9:30 a 23:00.",
       },
       {
         q: "¿Se puede reservar?",
         a: "Sí, por WhatsApp o llamando al +39 351 173 3108.",
+      },
+      {
+        q: "¿Se pueden celebrar cumpleaños y eventos privados?",
+        a: "Sí: cumpleaños, 18º cumpleaños, fiestas privadas y eventos, hasta 60 personas (terraza + sala interior). Nos encargamos de decoración, tarta, comida, bebidas, música y ambientación. Escríbenos por WhatsApp al +39 351 173 3108.",
       },
       {
         q: "¿Tienen ambiente con música en vivo?",
@@ -375,7 +404,7 @@ const es: Dict = {
     titleWarm: "San Blas",
     whereLabel: "Dónde",
     hoursLabel: "Horario",
-    hoursValue: "Lun–Sáb: 17:00–00:00\nDom: 10:00–14:00 y 17:00–00:00",
+    hoursValue: "Todos los días\n9:30–23:00",
     contactLabel: "Contacto",
     contactValue: "WhatsApp disponible",
     ctaWhatsapp: "Escribir por WhatsApp",
@@ -1056,6 +1085,22 @@ const en: Dict = {
     specialWeekday: 5,
     specialStartTime: "18:00",
     specialEndTime: "00:00",
+    celebrate: {
+      label: "Celebrations & private events",
+      title: "Celebrate at Light Green",
+      text: "18th birthdays, birthdays, private parties and events. You bring the guests, we take care of everything!",
+      items: [
+        "Decoration and balloons",
+        "Custom cake",
+        "Food and menu for the party",
+        "Drinks and cocktails",
+        "Music and entertainment",
+        "Full event setup",
+      ],
+      capacity: "Large outdoor area + indoor room · Up to 60 people",
+      cta: "Ask on WhatsApp",
+      ctaMessage: "Hi Light Green! I'd like information about celebrating a birthday / private event.",
+    },
   },
   resenas: {
     label: "06 · What people say",
@@ -1077,11 +1122,15 @@ const en: Dict = {
       },
       {
         q: "What are the opening hours?",
-        a: "Every day from 5pm to midnight. On Sundays we also open from 10am to 2pm for lunch service.",
+        a: "Every day from 9:30am to 11pm.",
       },
       {
         q: "Can I book a table?",
         a: "Yes, via WhatsApp or by calling +39 351 173 3108.",
+      },
+      {
+        q: "Can we celebrate birthdays and private events?",
+        a: "Yes: birthdays, 18th birthdays, private parties and events for up to 60 people (outdoor terrace + indoor room). We handle decoration, cake, food, drinks, music and setup. Message us on WhatsApp at +39 351 173 3108.",
       },
       {
         q: "Is there live music?",
@@ -1110,7 +1159,7 @@ const en: Dict = {
     titleWarm: "San Blas",
     whereLabel: "Where",
     hoursLabel: "Hours",
-    hoursValue: "Mon–Sat: 5pm–midnight\nSun: 10am–2pm & 5pm–midnight",
+    hoursValue: "Every day\n9:30am–11pm",
     contactLabel: "Contact",
     contactValue: "WhatsApp available",
     ctaWhatsapp: "Message on WhatsApp",

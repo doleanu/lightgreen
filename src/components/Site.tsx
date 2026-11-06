@@ -435,6 +435,8 @@ export function Site({ locale }: { locale: Locale }) {
                 price: "0",
                 priceCurrency: "EUR",
                 availability: "https://schema.org/InStock",
+                // Free entry has applied since the event was announced.
+                validFrom: "2026-10-09T00:00:00+01:00",
               },
             }),
           }}

@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { DigitalMenu } from "@/components/DigitalMenu";
+import { getMenuTabs } from "@/lib/menuTabs";
 import { DICTS, LOCALES, type Locale } from "@/lib/dict";
 import { OG_IMAGE, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT, SITE_URL } from "@/lib/seo";
+
+// Refreshed on demand when the owner saves in /admin/precios; this is only the daily safety net.
+export const revalidate = 86400;
 
 export function generateStaticParams() {
   return LOCALES.filter((l) => l !== "es").map((locale) => ({ locale }));
@@ -35,5 +39,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function LocaleMenuPage({ params }: Props) {
   const { locale } = await params;
   if (!isLocale(locale) || locale === "es") notFound();
-  return <DigitalMenu locale={locale} />;
+  return <DigitalMenu locale={locale} tabs={await getMenuTabs(locale)} />;
 }

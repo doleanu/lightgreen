@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import {
   askName,
   askPeople,
@@ -77,6 +78,7 @@ function SendIcon({ className }: { className?: string }) {
 }
 
 export function ChatWidget() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
@@ -182,6 +184,9 @@ export function ChatWidget() {
 
     respondToIntent(matchIntent(trimmed));
   }
+
+  // the owner admin (/admin/*) is not the public site: no chat bubble over it
+  if (pathname?.startsWith("/admin")) return null;
 
   return (
     <div className="fixed bottom-5 right-5 z-50 sm:bottom-8 sm:right-8">

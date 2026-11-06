@@ -4,7 +4,7 @@
 
 export type Locale = "es" | "en";
 
-export type MenuItem = { name: string; desc: string; price: string };
+export type MenuItem = { name: string; desc: string; price: string; /** single numeric price, for schema.org offers */ amount?: number };
 export type MenuSection = { title: string; items: MenuItem[] };
 export type MenuTab = { key: string; label: string; sections: MenuSection[] };
 

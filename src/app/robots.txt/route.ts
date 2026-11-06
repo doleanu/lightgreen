@@ -9,6 +9,7 @@ export function GET() {
     "User-agent: *",
     "Content-Signal: ai-train=no, search=yes, ai-input=yes",
     "Allow: /",
+    "Disallow: /admin",
     "",
     `Sitemap: ${SITE_URL}/sitemap.xml`,
   ].join("\n");

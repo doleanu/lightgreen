@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DigitalMenu } from "@/components/DigitalMenu";
+import { getMenuTabs } from "@/lib/menuTabs";
 import { DICTS } from "@/lib/dict";
 import { OG_IMAGE, OG_IMAGE_WIDTH, OG_IMAGE_HEIGHT, SITE_URL } from "@/lib/seo";
 
@@ -18,6 +19,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return <DigitalMenu locale="es" />;
+// Refreshed on demand when the owner saves in /admin/precios; this is only the daily safety net.
+export const revalidate = 86400;
+
+export default async function Page() {
+  return <DigitalMenu locale="es" tabs={await getMenuTabs("es")} />;
 }

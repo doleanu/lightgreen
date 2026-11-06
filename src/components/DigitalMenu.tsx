@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Reveal from "@/components/Reveal";
 import { business } from "@/lib/chatAssistant";
-import { DICTS, LOCALES, type Locale } from "@/lib/dict";
+import { DICTS, LOCALES, type Locale, type MenuTab } from "@/lib/dict";
 
 const TEL_HREF = business.phoneHref;
 const WA_URL = `https://wa.me/${business.whatsappNumber}`;
@@ -12,21 +12,16 @@ function localePath(locale: Locale, path: string) {
   return locale === "es" ? path : `/${locale}${path}`;
 }
 
-// "34,50 €" or "€34.50" → "34.50", for schema.org Offer.price (plain decimal).
-function parsePrice(price: string) {
-  return price.replace(/[€\s]/g, "").replace(",", ".");
-}
-
-export function DigitalMenu({ locale }: { locale: Locale }) {
+export function DigitalMenu({ locale, tabs }: { locale: Locale; tabs: MenuTab[] }) {
   const d = DICTS[locale];
   const m = d.menuPage;
-  const [activeTab, setActiveTab] = useState(m.tabs[0].key);
+  const [activeTab, setActiveTab] = useState(tabs[0]?.key ?? "");
 
   const menuJsonLd = {
     "@context": "https://schema.org",
     "@type": "Menu",
     name: m.metaTitle,
-    hasMenuSection: m.tabs.map((tab) => ({
+    hasMenuSection: tabs.map((tab) => ({
       "@type": "MenuSection",
       name: tab.label,
       hasMenuItem: tab.sections.flatMap((section) =>
@@ -34,11 +29,10 @@ export function DigitalMenu({ locale }: { locale: Locale }) {
           "@type": "MenuItem",
           name: item.name,
           description: item.desc,
-          offers: {
-            "@type": "Offer",
-            price: parsePrice(item.price),
-            priceCurrency: "EUR",
-          },
+          // an Offer only when the item has exactly one numeric price (not "Copa … · Botella …")
+          ...(item.amount !== undefined
+            ? { offers: { "@type": "Offer", price: item.amount.toFixed(2), priceCurrency: "EUR" } }
+            : {}),
         }))
       ),
     })),
@@ -49,7 +43,7 @@ export function DigitalMenu({ locale }: { locale: Locale }) {
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(menuJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(menuJsonLd).replace(/</g, "\\u003c") }}
       />
       {/* ============ HEADER ============ */}
       <header className="sticky inset-x-0 top-0 z-40 border-b border-terracotta/15 bg-cream/90 backdrop-blur-md">
@@ -87,7 +81,7 @@ export function DigitalMenu({ locale }: { locale: Locale }) {
         </div>
         {/* ============ TABS ============ */}
         <div className="mx-auto flex max-w-4xl gap-1 overflow-x-auto px-5 sm:px-8">
-          {m.tabs.map((t) => (
+          {tabs.map((t) => (
             <button
               key={t.key}
               type="button"
@@ -127,7 +121,7 @@ export function DigitalMenu({ locale }: { locale: Locale }) {
            the full menu stays in the server-rendered HTML for crawlers) ============ */}
       <section className="relative bg-cream py-16 sm:py-20">
         <div className="mx-auto max-w-3xl px-5 sm:px-8">
-          {m.tabs.map((t) => (
+          {tabs.map((t) => (
             <div key={t.key} className={t.key === activeTab ? "block" : "hidden"}>
               {t.sections.map((section, sIdx) => (
                 <div key={section.title || `section-${sIdx}`} className={sIdx > 0 ? "mt-14" : ""}>

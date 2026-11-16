@@ -76,15 +76,19 @@ const jsonLd = {
     bestRating: 5,
     reviewCount: 29,
   },
-  // Open every day 11:00-00:00 (updated 2026-10-09 per the owner).
+  // Mon-Fri 17:00-23:00; Sat-Sun also 10:00-15:00 (updated 2026-11-16 per the owner).
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday",
-      ],
-      opens: "11:00",
-      closes: "00:00",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "17:00",
+      closes: "23:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday", "Sunday"],
+      opens: "10:00",
+      closes: "15:00",
     },
   ],
 };
